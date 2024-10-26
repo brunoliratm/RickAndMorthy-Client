@@ -1,4 +1,11 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
 
 # Compiled output
 /dist
@@ -6,10 +13,21 @@
 /out-tsc
 /bazel-out
 
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
 # Node
 /node_modules
 npm-debug.log
 yarn-error.log
+
+# Dependency directories
+node_modules/
+jspm_packages/
+bower_components
 
 # IDEs and editors
 .idea/
@@ -28,15 +46,98 @@ yarn-error.log
 !.vscode/extensions.json
 .history/*
 
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Coverage directories and files
+coverage
+*.lcov
+.nyc_output
+
 # Miscellaneous
 /.angular/cache
 .sass-cache/
 /connect.lock
-/coverage
 /libpeerconnection.log
 testem.log
 /typings
 
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Next.js and other frameworks build output
+.next
+.nuxt
+.vuepress/dist
+.vuepress/.temp
+.cache/
+.nuxt
+.out
+.docusaurus
+
+# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# Compiled binary addons (https://nodejs.org/api/addons.html)
+build/Release
+
+# Snowpack dependency directory (https://snowpack.dev/)
+web_modules/
+
 # System files
 .DS_Store
 Thumbs.db
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# Yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
