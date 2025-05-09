@@ -1,0 +1,33 @@
+<main class="character-card">
+  <article class="group">
+    <img class="image" [src]="character.image" [alt]="character.name" />
+
+
+    <div class="character-info">
+      <h2 class="character-name">{{ character.name }}</h2>
+      <ul class="information">
+        <li class="info-item">
+          <i class="pi pi-wave-pulse"></i>
+          <span class="status">{{ character.status }}</span>
+        </li>
+        <li class="info-item">
+          <i class="pi pi-user"></i>
+          <span class="species">{{ character.species }}</span>
+        </li>
+        <li class="info-item">
+          <i class="pi pi-info-circle"></i>
+          <span class="origin">{{ character.location.name }}</ span>
+        </li>
+      </ul>
+      <div class="button-container">
+        <a class="knew-more-btn">
+          <i class="pi pi-info-circle know"></i>
+          <span class="text-wrapper">Saiba mais</span>
+        </a>
+        <a class="heart" aria-label="Add to favorites">
+          <i class="pi pi-heart"></i>
+        </a>
+      </div>
+    </div>
+  </article>
+</main>

@@ -1,10 +1,3 @@
 <section class="main">
-  <h2>Personagens</h2>
-  <div class="grid">
-    <div class="card" *ngFor="let c of characters">
-      <img [src]="c.image" alt="{{ c.name }}">
-      <h3>{{ c.name }}</h3>
-      <p>{{ c.species }} - {{ c.status }}</p>
-    </div>
-  </div>
+<app-character-section></app-character-section>
 </section>

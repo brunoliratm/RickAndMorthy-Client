@@ -8,14 +8,20 @@ export interface Character {
   name: string;
   status: string;
   species: string;
+  gender: string;
+  type: string;
   image: string;
+  location: {
+    name: string;
+    url: string;
+  };
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CharacterService {
-  private readonly API_URL = `${environment.apiBaseUrl}/character`;
+  private readonly API_URL = `${environment.apiBaseUrl}/characters`;
 
   constructor(private http: HttpClient) {}
 
