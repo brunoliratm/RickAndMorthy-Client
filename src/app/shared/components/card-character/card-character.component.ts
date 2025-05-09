@@ -1,14 +1,31 @@
-import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 import { Character } from '@core/services/character.service';
+import { CharacterDetailDialogComponent } from '@shared/components/character-detail-dialog/character-detail-dialog.component';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
 
 @Component({
   selector: 'app-card-character',
   standalone: true,
-  imports: [ CommonModule ],
+  imports: [
+    CommonModule,
+    DialogModule,
+    ButtonModule,
+    CharacterDetailDialogComponent,
+  ],
   templateUrl: './card-character.component.html',
-  styleUrl: './card-character.component.scss'
+  styleUrl: './card-character.component.scss',
 })
 export class CardCharacterComponent {
   @Input() character!: Character;
+  showDialog = false;
+
+  openDialog(): void {
+    this.showDialog = true;
+  }
+
+  closeDialog(): void {
+    this.showDialog = false;
+  }
 }

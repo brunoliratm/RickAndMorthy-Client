@@ -2,10 +2,9 @@
   <article class="group">
     <img class="image" [src]="character.image" [alt]="character.name" />
 
-
     <div class="character-info">
       <h2 class="character-name">{{ character.name }}</h2>
-      <ul class="information">
+      <div class="information">
         <li class="info-item">
           <i class="pi pi-wave-pulse"></i>
           <span class="status">{{ character.status }}</span>
@@ -15,15 +14,15 @@
           <span class="species">{{ character.species }}</span>
         </li>
         <li class="info-item">
-          <i class="pi pi-info-circle"></i>
-          <span class="origin">{{ character.location.name }}</ span>
+          <i class="pi pi-map"></i>
+          <span class="origin">{{ character.location.name }}</span>
         </li>
-      </ul>
+      </div>
       <div class="button-container">
-        <a class="knew-more-btn">
+        <button class="knew-more-btn" type="button" (click)="openDialog()">
           <i class="pi pi-info-circle know"></i>
           <span class="text-wrapper">Saiba mais</span>
-        </a>
+        </button>
         <a class="heart" aria-label="Add to favorites">
           <i class="pi pi-heart"></i>
         </a>
@@ -31,3 +30,22 @@
     </div>
   </article>
 </main>
+
+<p-dialog
+  [(visible)]="showDialog"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [style]="{ width: '95%', maxWidth: '40rem', borderRadius: '16px' }"
+  [contentStyle]="{ overflow: 'hidden', padding: '0' }"
+  [showHeader]="false"
+  appendTo="body"
+  [baseZIndex]="10000"
+  styleClass="character-dialog"
+  [dismissableMask]="true"
+>
+  <app-character-detail-dialog
+    [character]="character"
+    (closeEvent)="closeDialog()"
+  ></app-character-detail-dialog>
+</p-dialog>
