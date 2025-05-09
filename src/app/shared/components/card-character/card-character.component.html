@@ -43,6 +43,10 @@
   [baseZIndex]="10000"
   styleClass="character-dialog"
   [dismissableMask]="true"
+  [maskStyle]="{
+    'background-color': 'rgba(0,0,0,0.7)',
+    'backdrop-filter': 'blur(2px)'
+  }"
 >
   <app-character-detail-dialog
     [character]="character"
