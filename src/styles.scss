@@ -14,8 +14,9 @@
   --secundary-color: #11b0c8;
 }
 
-* {
+body {
   background-color: var(--bg-color);
   margin: 0;
-  padding: 0 1.5em;
+  padding: 0 2em !important;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
