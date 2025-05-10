@@ -63,7 +63,7 @@ img {
 .pi {
   width: 1em;
   height: 1em;
-  margin-right: 8px;
+  margin-right: 0.5rem;
   color: var(--text-color);
 }
 
@@ -116,4 +116,135 @@ img {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .character-card {
+    padding: 0.7em;
+    width: 180px;
+  }
+
+  .image {
+    height: 7em;
+  }
+
+  .info-item {
+    margin-bottom: 0.15em;
+  }
+
+  .pi {
+    font-size: 0.7em;
+    width: 0.8em;
+    height: 0.8em;
+    margin-right: 4px;
+  }
+
+  .status,
+  .species,
+  .origin {
+    font-size: 0.7em;
+  }
+
+  .button-container {
+    margin-top: 0.5em;
+  }
+
+  .knew-more-btn {
+    padding: 4px 8px;
+
+    .know {
+      font-size: 0.8em;
+      margin-right: 2px;
+    }
+
+    .text-wrapper {
+      font-size: 0.65em;
+    }
+  }
+
+  .heart {
+    font-size: 1em;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .character-card {
+    padding: 0.5em;
+  }
+
+  .image {
+    height: 8em;
+  }
+
+  .pi {
+    display: flex;
+    align-items: center;
+    margin-right: 0.5rem;
+  }
+
+  .character-name {
+    font-size: 0.9em;
+    margin-bottom: 0.3em;
+  }
+
+  .info-item {
+    margin-bottom: 0.15em;
+  }
+
+  .pi {
+    width: 0.9em;
+    height: 0.9em;
+    margin-right: 4px;
+  }
+
+  .status,
+  .species,
+  .origin {
+    font-size: 0.75em;
+  }
+
+  .button-container {
+    margin-top: 0.5em;
+  }
+
+  .knew-more-btn {
+    padding: 6px 10px;
+
+    .know {
+      font-size: 0.9em;
+      margin-right: 3px;
+    }
+
+    .text-wrapper {
+      font-size: 0.7em;
+    }
+  }
+
+  .heart {
+    font-size: 1.2em;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .character-card {
+    padding: 0.4em;
+  }
+
+  .image {
+    height: 6em;
+  }
+
+  .character-name {
+    font-size: 0.8em;
+  }
+
+  .status,
+  .species,
+  .origin {
+    font-size: 0.65em;
+  }
+
+  .knew-more-btn {
+    padding: 5px 10px;
+  }
 }

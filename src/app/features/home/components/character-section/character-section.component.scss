@@ -36,10 +36,39 @@
     }
   }
 
+  .grid-container {
+    width: 100%;
+    position: relative;
+
+    @media only screen and (max-width: 768px) {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+      padding-bottom: 10px;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 1rem;
     margin-bottom: 2em;
+
+    @media only screen and (max-width: 768px) {
+      display: flex;
+      grid-template-columns: none;
+      flex-wrap: nowrap;
+      width: max-content;
+      padding-right: 1rem;
+
+      app-card-character {
+        width: 180px; 
+        flex: 0 0 auto;
+      }
+    }
   }
 }
