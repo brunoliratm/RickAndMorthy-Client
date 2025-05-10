@@ -9,6 +9,24 @@ img {
   max-width: 100%;
 }
 
+:host ::ng-deep .character-dialog {
+  .p-dialog-content {
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  @media (max-width: 768px) {
+    .p-dialog {
+      margin: 0;
+      max-height: 95vh;
+      position: fixed;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) !important;
+    }
+  }
+}
+
 .character-card {
   padding: 1.1em;
   width: 100%;

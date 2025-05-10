@@ -30,7 +30,6 @@
     </div>
   </article>
 </main>
-
 <p-dialog
   [(visible)]="showDialog"
   [modal]="true"
@@ -43,6 +42,8 @@
   [baseZIndex]="10000"
   styleClass="character-dialog"
   [dismissableMask]="true"
+  [breakpoints]="{ '960px': '95vw', '640px': '100vw' }"
+  [position]="'center'"
   [maskStyle]="{
     'background-color': 'rgba(0,0,0,0.7)',
     'backdrop-filter': 'blur(2px)'
