@@ -1,9 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .character-section {
   .section-header {
     display: flex;
@@ -66,7 +60,7 @@
       padding-right: 1rem;
 
       app-card-character {
-        width: 180px; 
+        width: 180px;
         flex: 0 0 auto;
       }
     }
