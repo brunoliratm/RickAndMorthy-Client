@@ -10,13 +10,13 @@ interface CharacterResponse {
 }
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-main',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+  templateUrl: './main.component.html',
+  styleUrl: './main.component.scss',
 })
-export class HomeComponent implements OnInit {
+export class MainComponent implements OnInit {
   characters: Character[] = [];
 
   constructor(private characterService: CharacterService) {}
