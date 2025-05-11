@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Character } from '@core/services/character.service';
+import { Character } from '@core/models/character.model';
 import { DialogModule } from 'primeng/dialog';
 
 @Component({

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { Character } from '@core/services/character.service';
+import { Character } from '@core/models/character.model';
 import { CharacterDetailDialogComponent } from '@shared/components/character-detail-dialog/character-detail-dialog.component';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
