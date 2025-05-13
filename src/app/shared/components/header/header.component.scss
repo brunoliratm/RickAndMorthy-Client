@@ -6,12 +6,13 @@
   padding: 1em 0;
 
   &__logotype {
-    width: 80px;
-    height: 80px;
-    background-image: url('@assets/icon-light.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 60%;
+    width: fit-content;
+
+    & img {
+      width: 100%;
+      object-fit: cover;
+      aspect-ratio: 1 / 1;  
+    }
   }
 
   &__actions {
@@ -32,9 +33,9 @@
       padding: .6em .7em;
       border-radius: 1.5em;
       color: var(--text-color);
-      font-family: "Inter", sans-serif;
       font-weight: 300;
       font-size: 12px;
+      cursor: pointer;
     }
 
     &__theme {
