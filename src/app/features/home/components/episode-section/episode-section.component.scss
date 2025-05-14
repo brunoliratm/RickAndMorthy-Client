@@ -23,14 +23,22 @@
       padding: 0.6rem 1.2rem;
       display: inline-flex;
       align-items: center;
+      align-self: center;
       font-size: 0.9rem;
       line-height: 1;
       height: 1.9rem;
       border: none;
       outline: none;
       cursor: pointer;
+      -webkit-appearance: none;
+      -moz-appearance: none;
       appearance: none;
       box-shadow: none;
+
+      i {
+        margin-right: 0.5rem;
+        font-size: 1rem;
+      }
     }
   }
 
@@ -57,12 +65,10 @@
     grid-template-columns: repeat(5, minmax(220px, 1fr));
     grid-auto-rows: auto;
 
-    // Tablet/iPad layout (769px até 1226px)
     @media only screen and (max-width: 1226px) and (min-width: 769px) {
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     }
 
-    // Mobile layout (abaixo de 768px)
     @media only screen and (max-width: 768px) {
       display: flex;
       grid-template-columns: none;

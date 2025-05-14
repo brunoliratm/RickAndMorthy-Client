@@ -72,10 +72,10 @@
 }
 [data-theme="light"] {
       .tv-icon {
-        color: var(--text-color); /* Cor do texto (escuro no tema claro) */
+        color: var(--text-color); 
           
         .pi-play {
-          color: var(--secundary-color); /* Mantém a cor secundária ou define uma específica */
+          color: var(--secundary-color); 
         }
       }
     }
