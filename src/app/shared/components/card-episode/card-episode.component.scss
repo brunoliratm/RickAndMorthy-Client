@@ -1,15 +1,14 @@
 .card-episode {
-  padding: 1.2rem;
+  padding: 1.1rem;
   background-color: var(--primary-color);
   border-radius: 1rem;
   box-shadow: 0.25rem 0.375rem 0.25rem 0.125rem rgba(0, 0, 0, 0.25);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow: hidden; 
-  isolation: isolate; 
+  overflow: hidden;
+  isolation: isolate;
 
   &:hover {
     box-shadow: 0.25rem 0.375rem 0.25rem 0.125rem rgba(0, 0, 0, 0.5);
@@ -22,17 +21,17 @@
     align-items: flex-start;
     min-width: 0;
   }
-  
+
   .tv-icon {
     position: relative;
     color: var(--text-color);
     font-size: 1.2rem;
     margin-top: 0.3rem;
-    
+
     .pi-desktop {
       display: block;
     }
-    
+
     .pi-play {
       position: absolute;
       font-size: 0.5rem;
@@ -41,11 +40,11 @@
       transform: translate(-50%, -50%);
     }
   }
-  
+
   .title-container {
     flex: 1;
     min-width: 0;
-    
+
   .title-container-title {
     font-weight: 300;
     color: var(--text-color);
@@ -55,10 +54,10 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     min-height: 2.4em;
-    width: 100%;       
+    width: 100%;
     display: block;
   }
-    
+
     .title-container-code {
       font-weight: 300;
       color: var(--text-color);
@@ -66,16 +65,16 @@
       margin-top: -1rem;
       display: flex;
       align-items: center;
-      
+
       }
   }
 }
 [data-theme="light"] {
       .tv-icon {
-        color: var(--text-color); 
-          
+        color: var(--text-color);
+
         .pi-play {
-          color: var(--secundary-color); 
+          color: var(--secundary-color);
         }
       }
     }
@@ -163,7 +162,7 @@
     font-size: 1em;
     padding: 0.4rem;
   }
-  
+
 }
 
 @media only screen and (max-width: 30rem) {
