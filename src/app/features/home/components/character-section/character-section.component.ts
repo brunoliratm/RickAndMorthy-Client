@@ -21,7 +21,7 @@ export class CharacterSectionComponent implements OnInit {
     this.characterService
       .getCharacters({})
       .subscribe((res) => {
-      this.characters = res.results.slice(0, 5);
+      this.characters = res.results.slice(0, 10);
       });
   }
 }
