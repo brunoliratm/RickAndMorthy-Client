@@ -43,8 +43,8 @@
         }
       }
 
-      & .terceira-division {
-        gap: .7em;
+      & .third-division {
+        gap: 0.7em;
         display: flex;
         flex-direction: row;
         width: fit-content;
@@ -60,11 +60,16 @@
           font-size: 14px;
           font-weight: 400;
           align-items: center;
-          padding: .6em .8em;
+          padding: 0.6em 0.8em;
           border-radius: 1.5em;
           color: var(--text-color);
           justify-content: space-between;
           background: var(--primary-color);
+        }
+
+        &__actions:hover {
+          background: var(--secundary-color);
+
         }
       }
     }
@@ -90,11 +95,11 @@
 
         & .secundary-division {
           & span {
-            font-size: .9em;
+            font-size: 0.9em;
           }
         }
 
-        & .terceira-division {
+        & .third-division {
           &__actions {
             gap: 4px;
             font-size: 13px;
@@ -113,6 +118,8 @@
       text-align: center;
     }
 
-    &__persons {display: none;}
+    &__persons {
+      display: none;
+    }
   }
 }
