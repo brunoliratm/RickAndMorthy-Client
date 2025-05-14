@@ -1,0 +1,79 @@
+.episode-section {
+  .section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+
+    h2 {
+      font-size: 1.6rem;
+      color: var(--text-color);
+      margin-right: 1rem;
+      margin-bottom: 0;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      height: 2.2rem;
+    }
+
+    .btn {
+      background-color: var(--primary-color);
+      color: var(--text-color);
+      text-decoration: none;
+      border-radius: 25px;
+      padding: 0.6rem 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.9rem;
+      line-height: 1;
+      height: 1.9rem;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      box-shadow: none;
+    }
+  }
+
+  .grid-container {
+    width: 100%;
+    position: relative;
+
+    @media only screen and (max-width: 768px) {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+      padding-bottom: 10px;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  .grid {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2em;
+    grid-template-columns: repeat(5, minmax(220px, 1fr));
+    grid-auto-rows: auto;
+
+    // Tablet/iPad layout (769px até 1226px)
+    @media only screen and (max-width: 1226px) and (min-width: 769px) {
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+
+    // Mobile layout (abaixo de 768px)
+    @media only screen and (max-width: 768px) {
+      display: flex;
+      grid-template-columns: none;
+      flex-wrap: nowrap;
+      width: max-content;
+      padding-right: 1rem;
+
+      app-card-episode {
+        width: 180px;
+        flex: 0 0 auto;
+      }
+    }
+  }
+}
