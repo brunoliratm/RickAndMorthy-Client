@@ -4,6 +4,7 @@ import {
   Character,
   CharacterService,
 } from '@core/services/character.service';
+import { HeroComponent } from "../../../../shared/components/hero/hero.component";
 
 interface CharacterResponse {
   results: Character[];
@@ -12,7 +13,7 @@ interface CharacterResponse {
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HeroComponent],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
 })
