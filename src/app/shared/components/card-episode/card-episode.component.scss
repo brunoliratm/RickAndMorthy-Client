@@ -9,6 +9,8 @@
   justify-content: space-between;
   overflow: hidden;
   isolation: isolate;
+  box-sizing: border-box;
+  width: 100%;
 
   &:hover {
     box-shadow: 0.25rem 0.375rem 0.25rem 0.125rem rgba(0, 0, 0, 0.5);
@@ -46,9 +48,9 @@
     min-width: 0;
 
   .title-container-title {
-    font-weight: 300;
+    font-weight: 900;
     color: var(--text-color);
-    font-size: 1.1em;
+    font-size: 1em;
     margin-bottom: 0.2em;
     overflow: hidden;
     white-space: nowrap;
@@ -59,7 +61,7 @@
   }
 
     .title-container-code {
-      font-weight: 300;
+      font-weight: 500;
       color: var(--text-color);
       font-size: 0.9em;
       margin-top: -1rem;
@@ -127,13 +129,12 @@
   .know {
     color: var(--text-color);
     background-color: var(--secundary-color);
-    font-size: 1.1em;
+    font-size: 1.2em;
     margin-right: 0.3125rem;
   }
 
   .text-wrapper {
-    font-family: "Inter", Helvetica;
-    font-weight: 300;
+    font-weight: 700;
     color: var(--text-color);
     background-color: var(--secundary-color);
     font-size: 0.9em;
