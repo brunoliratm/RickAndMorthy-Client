@@ -5,9 +5,13 @@
             <i #themeIcon class="pi pi-moon"></i>
             <span #themeText>Dark Mode</span>
         </button>
-        <button class="header__actions__user">
+        <button class="header__actions__user" (click)="showModal()">
             <i class="pi pi-user"></i>
             <span>Sign in / Login</span>
         </button>
     </div>
 </section>
+
+<p-dialog [(visible)]="displayModal" [modal]="true" [closable]="true" [style]="{ width: '30vw' }">
+    <app-modal-register-dialog></app-modal-register-dialog>
+</p-dialog>

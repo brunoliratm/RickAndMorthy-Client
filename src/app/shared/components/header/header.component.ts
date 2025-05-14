@@ -1,10 +1,17 @@
 import { Component, Renderer2, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { ModalRegisterDialogComponent } from "../dialogs/modal-register-dialog/modal-register-dialog.component";
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule, ButtonModule],
+  imports: [
+    CommonModule,
+    ButtonModule,
+    DialogModule,
+    ModalRegisterDialogComponent
+  ],
   standalone: true,
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
@@ -14,6 +21,7 @@ export class HeaderComponent implements AfterViewInit {
   @ViewChild('themeIcon') themeIcon!: ElementRef;
   @ViewChild('themeText') themeText!: ElementRef;
   @ViewChild('logotype') logotype!: ElementRef;
+  displayModal: boolean = false;
 
   constructor(private renderer: Renderer2) {}
 
@@ -46,5 +54,9 @@ export class HeaderComponent implements AfterViewInit {
     if (this.logotype) {
       this.logotype.nativeElement.src = `assets/icon-${next}.svg`
     }
+  }
+
+  showModal() {
+    this.displayModal = true;
   }
 }
