@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Episode } from '@core/models/episode.model';
-import { EpisodeDetailDialogComponent } from '@shared/components/episode-detaild-dialog/episode-detail-dialog.component'; 
+import { EpisodeDetailDialogComponent } from '@shared/components/dialogs/episode-detaild-dialog/episode-detail-dialog.component';
 import { DialogModule } from 'primeng/dialog';
 
 @Component({
