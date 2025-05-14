@@ -40,9 +40,10 @@
   .grid-container {
     width: 100%;
     position: relative;
+    overflow-x: auto;
 
     @media only screen and (max-width: 768px) {
-      overflow-x: auto;
+
       -webkit-overflow-scrolling: touch;
       scroll-behavior: smooth;
       padding-bottom: 10px;
@@ -54,14 +55,18 @@
   }
 
   .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
     gap: 1rem;
     margin-bottom: 2em;
 
+    app-card-character {
+      width: 250px;
+      flex: 0 0 auto;
+    }
+
     @media only screen and (max-width: 768px) {
-      display: flex;
-      grid-template-columns: none;
       flex-wrap: nowrap;
       width: max-content;
       padding-right: 1rem;
