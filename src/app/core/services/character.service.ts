@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@core/config/environment';
-import { Observable } from 'rxjs';
 import { Character } from '@core/models/character.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -23,5 +23,9 @@ export class CharacterService {
     gender?: string;
   }): Observable<{ results: Character[] }> {
     return this.http.get<{ results: Character[] }>(this.API_URL, { params });
+  }
+
+  getCharacterById(id: number): Observable<Character> {
+    return this.http.get<Character>(`${this.API_URL}/${id}`);
   }
 }

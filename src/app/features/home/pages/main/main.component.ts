@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component} from '@angular/core';
 import { CharacterSectionComponent } from '@features/home/components/character-section/character-section.component';
+import { EpisodeSectionComponent } from '@features/home/components/episode-section/episode-section.component';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CommonModule, CharacterSectionComponent ],
+  imports: [CommonModule, CharacterSectionComponent, EpisodeSectionComponent], 
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
 })
