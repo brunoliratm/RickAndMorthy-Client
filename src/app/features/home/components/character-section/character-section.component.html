@@ -1,0 +1,15 @@
+<section class="character-section">
+  <div class="section-header">
+    <h2>Personagens</h2>
+    <button class="btn" routerLink="/characters">Ver todos</button>
+  </div>
+
+  <div class="grid-container">
+    <div class="grid">
+      <app-card-character
+        *ngFor="let c of characters"
+        [character]="c"
+      ></app-card-character>
+    </div>
+  </div>
+</section>
