@@ -34,6 +34,11 @@
       -moz-appearance: none;
       appearance: none;
       box-shadow: none;
+
+      i {
+        margin-right: 0.5rem;
+        font-size: 1rem;
+      }
     }
   }
 
@@ -43,7 +48,6 @@
     overflow-x: auto;
 
     @media only screen and (max-width: 768px) {
-
       -webkit-overflow-scrolling: touch;
       scroll-behavior: smooth;
       padding-bottom: 10px;
