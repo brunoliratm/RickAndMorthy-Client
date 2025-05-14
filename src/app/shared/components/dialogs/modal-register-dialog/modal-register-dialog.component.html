@@ -1,0 +1,42 @@
+<div class="p-fluid p-grid p-justify-center">
+    <div class="p-col-12 p-md-10 p-lg-8">
+        <div class="card">
+            <h1 class="p-text-center">Formulário de Cadastro</h1>
+
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-grid p-fluid">
+                <p-floatLabel>
+                    <label for="name">Name*</label>
+                    <input pInputText id="name" formControlName="name">
+                    <small *ngIf="form.get('name')?.invalid && form.get('name')?.touched" class="p-error">
+                        Nome é obrigatório
+                    </small>
+                </p-floatLabel>
+
+                <p-floatLabel>
+                    <label for="surname">Surname*</label>
+                    <input pInputText id="surname" formControlName="surname">
+                    <small *ngIf="form.get('surname')?.invalid && form.get('surname')?.touched" class="p-error">
+                        Sobrenome é obrigatório
+                    </small>
+                </p-floatLabel>
+
+                <p-floatLabel>
+                    <label for="email">Email*</label>
+                    <input pInputText id="email" formControlName="email">
+                    <small *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="p-error">
+                        {{ form.get('email')?.errors?.['required'] ? 'Email é obrigatório' : 'Email inválido' }}
+                    </small>
+                </p-floatLabel>
+
+                <p-floatLabel>
+                    <label for="password">Password*</label>
+                    <p-password id="password" formControlName="password" [feedback]="true"
+                        [toggleMask]="true"></p-password>
+                    <small *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="p-error">
+                        {{ form.get('password')?.errors?.['required'] ? 'password é obrigatória' : 'Senha deve ter pelo menos 6 caracteres' }}
+                    </small>
+                </p-floatLabel>
+            </form>
+        </div>
+    </div>
+</div>

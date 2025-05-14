@@ -1,1 +1,17 @@
-<p>header works!</p>
+<section class="header">
+    <div class="header__logotype"><img #logotype src="assets/icon-dark.svg" alt="logotype"></div>
+    <div class="header__actions">
+        <button #themeBtn class="header__actions__theme" (click)="toggleTheme()">
+            <i #themeIcon class="pi pi-moon"></i>
+            <span #themeText>Dark Mode</span>
+        </button>
+        <button class="header__actions__user" (click)="showModal()">
+            <i class="pi pi-user"></i>
+            <span>Sign in / Login</span>
+        </button>
+    </div>
+</section>
+
+<p-dialog [(visible)]="displayModal" [modal]="true" [closable]="true" [style]="{ width: '30vw' }">
+    <app-modal-register-dialog></app-modal-register-dialog>
+</p-dialog>
