@@ -1,0 +1,17 @@
+<section class="character-section">
+  <div class="section-header">
+    <h2>Characters</h2>
+    <button class="btn" routerLink="/characters">
+      <i class="pi pi-objects-column"></i> See all
+    </button>
+  </div>
+
+  <div class="grid-container">
+    <div class="grid">
+      <app-card-character
+        *ngFor="let c of characters"
+        [character]="c"
+      ></app-card-character>
+    </div>
+  </div>
+</section>

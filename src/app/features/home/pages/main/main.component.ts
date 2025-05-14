@@ -1,30 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import {
-  Character,
-  CharacterService,
-} from '@core/services/character.service';
-import { HeroComponent } from "../../../../shared/components/hero/hero.component";
-
-interface CharacterResponse {
-  results: Character[];
-}
+import { HeroComponent } from "@shared/components/hero/hero.component";
+import { CharacterSectionComponent } from '@features/home/components/character-section/character-section.component';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CommonModule, HeroComponent],
+  imports: [CommonModule, HeroComponent, CharacterSectionComponent ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
 })
-export class MainComponent implements OnInit {
-  characters: Character[] = [];
+export class MainComponent {
 
-  constructor(private characterService: CharacterService) {}
-
-  ngOnInit(): void {
-    this.characterService.getCharacters().subscribe((res) => {
-      this.characters = res.results.slice(0, 5);
-    });
-  }
 }

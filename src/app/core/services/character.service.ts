@@ -1,25 +1,27 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 import { environment } from '@core/config/environment';
-
-export interface Character {
-  id: number;
-  name: string;
-  status: string;
-  species: string;
-  image: string;
-}
+import { Observable } from 'rxjs';
+import { Character } from '@core/models/character.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CharacterService {
-  private readonly API_URL = `${environment.apiBaseUrl}/character`;
+  private readonly API_URL = `${environment.apiBaseUrl}/characters`;
 
   constructor(private http: HttpClient) {}
 
-  getCharacters(): Observable<{ results: Character[] }> {
-    return this.http.get<{ results: Character[] }>(this.API_URL);
+  getCharacters(params: {
+    page?: number;
+    direction?: string;
+    sort?: string;
+    name?: string;
+    status?: string;
+    species?: string;
+    type?: string;
+    gender?: string;
+  }): Observable<{ results: Character[] }> {
+    return this.http.get<{ results: Character[] }>(this.API_URL, { params });
   }
 }
