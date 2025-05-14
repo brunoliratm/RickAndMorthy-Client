@@ -1,0 +1,48 @@
+<div class="card-location">
+  <div class="planet-container">
+     <div class="earth-icon">
+      <i class="pi pi-globe"></i> <!-- Ícone do globo terrestre -->
+    </div>
+    <span class="planet-label">Planet</span>
+  </div>
+
+  <div class="title-container">
+    <p class="title-container-title">{{ location.name }}</p>
+    <p class="title-container-code">{{ location.dimension }}</p>
+  </div>
+
+  <div class="button-container">
+    <button class="knew-more-btn" type="button" (click)="openDialog()">
+      <i class="pi pi-info-circle know"></i>
+      <span class="text-wrapper">Saiba mais</span>
+    </button>
+    <button class="heart" aria-label="Add to favorites" type="button">
+      <i class="pi pi-heart"></i>
+    </button>
+  </div>
+
+  <p-dialog
+    [(visible)]="showDialog"
+    [modal]="true"
+    [draggable]="false"
+    [resizable]="false"
+    [style]="{ width: '95%', maxWidth: '40rem', borderRadius: '1rem' }"
+    [contentStyle]="{ overflow: 'hidden', padding: '0' }"
+    [showHeader]="false"
+    appendTo="body"
+    [baseZIndex]="10000"
+    styleClass="character-dialog"
+    [dismissableMask]="true"
+    [breakpoints]="{ '960px': '95vw', '640px': '100vw' }"
+    [position]="'center'"
+    [maskStyle]="{
+      'background-color': 'rgba(0,0,0,0.7)',
+      'backdrop-filter': 'blur(2px)'
+    }"
+  >
+    <app-location-detail-dialog
+      [location]="location"
+      (closeEvent)="closeDialog()"
+    ></app-location-detail-dialog>
+  </p-dialog>
+</div>
