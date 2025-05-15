@@ -101,10 +101,6 @@
     border-radius: 2rem;
     transition: background-color 0.2s ease;
     
-    &:hover {
-      background-color: var(--secundary-hover-color);
-    }
-    
     .know {
       color: var(--text-color);
       font-size: 1.1em;

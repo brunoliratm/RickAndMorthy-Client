@@ -8,7 +8,7 @@ import { LocationSectionComponent } from '@features/home/components/location-sec
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [
+ imports: [
     CommonModule,
     HeroComponent,
     CharacterSectionComponent,
