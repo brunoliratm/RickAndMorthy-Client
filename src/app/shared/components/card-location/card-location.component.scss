@@ -44,9 +44,9 @@
   margin-bottom: 1.25rem;
   flex-direction: column;
   
-  .earth-icon {
-    font-size: 3rem;
-    color: var(--text-color);
+  .earth-icon { 
+  color: var(--text-color);
+  font-family: "Material Icons";
   }
   
   .planet-label {
