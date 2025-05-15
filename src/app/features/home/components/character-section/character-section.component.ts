@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Character } from '@core/models/character.model';
 import { CharacterService } from '@core/services/character.service';
-import { CardCharacterComponent } from '@shared/components/card-character/card-character.component';
+import { CardCharacterComponent } from '@shared/components/cards/card-character/card-character.component';
 
 @Component({
   selector: 'app-character-section',
