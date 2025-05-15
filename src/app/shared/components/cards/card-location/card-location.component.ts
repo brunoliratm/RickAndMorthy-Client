@@ -1,8 +1,8 @@
-import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 import { Location, LocationService } from '@core/services/location.service';
 import { DialogModule } from 'primeng/dialog';
-import { LocationDetailDialogComponent } from "../dialogs/location-detail-dialog/location-detail-dialog.component";
+import { LocationDetailDialogComponent } from '../../dialogs/location-detail-dialog/location-detail-dialog.component';
 
 @Component({
   selector: 'app-card-location',
@@ -14,7 +14,7 @@ import { LocationDetailDialogComponent } from "../dialogs/location-detail-dialog
 export class CardLocationComponent {
   @Input() location!: Location;
   showDialog = false;
-  selectedLocation!: Location; 
+  selectedLocation!: Location;
 
   constructor(private locationService: LocationService) {}
 

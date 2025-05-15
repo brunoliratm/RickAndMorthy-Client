@@ -24,9 +24,13 @@
 
 body {
   background-color: var(--bg-color);
-  padding: 0 2em !important;
+  padding: 1em 2.5em !important;
   font-weight: 400;
   font-family: "Inter", sans-serif, Helvetica;
+
+  @media screen and (max-width: 30em) {
+    padding: 1em 1.0em !important;
+  }
 }
 
 .p-dialog-mask {

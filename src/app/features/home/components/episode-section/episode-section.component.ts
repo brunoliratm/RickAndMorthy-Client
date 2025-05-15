@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EpisodeService } from '@core/services/episode.service';
 import { Episode } from '@core/models/episode.model';
-import { CardEpisodeComponent } from '@shared/components/card-episode/card-episode.component';
+import { CardEpisodeComponent } from '@shared/components/cards/card-episode/card-episode.component';
 import { forkJoin } from 'rxjs';
 
 @Component({

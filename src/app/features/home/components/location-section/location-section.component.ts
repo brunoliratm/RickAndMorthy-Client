@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LocationService, Location } from '@core/services/location.service';
-import { CardLocationComponent } from '@shared/components/card-location/card-location.component';
+import { Component, OnInit } from '@angular/core';
+import { Location, LocationService } from '@core/services/location.service';
+import { CardLocationComponent } from '@shared/components/cards/card-location/card-location.component';
 import { forkJoin } from 'rxjs';
 
 @Component({
@@ -17,11 +17,11 @@ export class LocationSectionComponent implements OnInit {
   constructor(private locationService: LocationService) {}
 
   ngOnInit(): void {
-    forkJoin([
-      this.locationService.getLocations({ page: 1 }),
-    ]).subscribe(([res1]) => {
-      const locations1 = res1.results.slice(0, 10);
-      this.locations = [...locations1];
-    });
+    forkJoin([this.locationService.getLocations({ page: 1 })]).subscribe(
+      ([res1]) => {
+        const locations1 = res1.results.slice(0, 10);
+        this.locations = [...locations1];
+      }
+    );
   }
 }
