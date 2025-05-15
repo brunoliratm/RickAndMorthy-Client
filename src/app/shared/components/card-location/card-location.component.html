@@ -1,7 +1,7 @@
 <div class="card-location">
   <div class="planet-container">
-     <div class="earth-icon">
-      <i class="pi pi-globe"></i> <!-- Ícone do globo terrestre -->
+    <div class="earth-icon">
+      <i class="pi pi-globe"></i> 
     </div>
     <span class="planet-label">Planet</span>
   </div>
@@ -41,7 +41,8 @@
     }"
   >
     <app-location-detail-dialog
-      [location]="location"
+      *ngIf="selectedLocation"
+      [location]="selectedLocation"
       (closeEvent)="closeDialog()"
     ></app-location-detail-dialog>
   </p-dialog>

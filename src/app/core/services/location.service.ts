@@ -31,4 +31,8 @@ export class LocationService {
    }): Observable<{ results: Location[] }> {
      return this.http.get<{ results: Location[] }>(this.API_URL, { params });
    }
+
+   getLocationById(id: number): Observable<Location> {
+    return this.http.get<Location>(`${this.API_URL}/${id}`);
+  }
 }

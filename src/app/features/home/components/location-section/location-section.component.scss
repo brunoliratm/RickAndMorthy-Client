@@ -1,4 +1,4 @@
-.location-section {
+.locations-section {
   .section-header {
     display: flex;
     align-items: center;
@@ -30,8 +30,6 @@
       border: none;
       outline: none;
       cursor: pointer;
-      -webkit-appearance: none;
-      -moz-appearance: none;
       appearance: none;
       box-shadow: none;
 
@@ -45,9 +43,9 @@
   .grid-container {
     width: 100%;
     position: relative;
+    overflow-x: auto;
 
     @media only screen and (max-width: 768px) {
-      overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scroll-behavior: smooth;
       padding-bottom: 10px;
@@ -59,19 +57,18 @@
   }
 
   .grid {
-    display: grid;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
     gap: 1rem;
     margin-bottom: 2em;
-    grid-template-columns: repeat(5, minmax(220px, 1fr));
-    grid-auto-rows: auto;
 
-    @media only screen and (max-width: 1226px) and (min-width: 769px) {
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    app-card-location {
+      width: 250px;
+      flex: 0 0 auto;
     }
 
     @media only screen and (max-width: 768px) {
-      display: flex;
-      grid-template-columns: none;
       flex-wrap: nowrap;
       width: max-content;
       padding-right: 1rem;

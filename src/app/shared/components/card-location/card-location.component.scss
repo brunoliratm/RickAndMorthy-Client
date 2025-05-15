@@ -1,212 +1,281 @@
-.card-location {
-  padding: 1.1rem;
-  background-color: var(--primary-color);
-  border-radius: 1rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.locations-horizontal-scroll {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
-  isolation: isolate;
-  text-align: center;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+  background-color: var(--primary-color);
+  
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: var(--secundary-color);
+    border-radius: 10px;
+  }
+}
+
+.card-location {
+  flex: 0 0 calc(14.2857% - 1.3rem); 
+  scroll-snap-align: start;
+  padding: 1.5rem;
+  background-color: var(--primary-color);
+  border-radius: 1.2rem;
+  box-shadow: 0.25rem 0.375rem 0.25rem 0.125rem rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 200px;
 
   &:hover {
     box-shadow: 0.25rem 0.375rem 0.25rem 0.125rem rgba(0, 0, 0, 0.5);
     transform: translateY(-0.1875rem);
-    
-    .earth-icon i {
-      transform: rotate(10deg) scale(1.1);
-    }
-  }
-
-  .planet-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1rem;
-
-    .earth-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      margin-bottom: 0.5rem;
-      
-      i {
-        font-size: 4rem;
-        color: var(--text-color);
-        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-      }
-    }
-
-    .planet-label {
-      color: var(--text-color);
-      font-size: 0.9rem;
-      font-weight: 300;
-      letter-spacing: 0.05em;
-    }
-  }
-
-  .title-container {
-    margin: 1rem 0;
-
-    .title-container-title {
-      font-weight: 500;
-      color: var(--secundary-color);
-      font-size: 1.1em;
-      margin-bottom: 0.2em;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-
-    .title-container-code {
-      font-weight: 400;
-      color: var(--secundary-color);
-      font-size: 1.1em;
-      opacity: 0.8;
-    }
-  }
-
-  .button-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1em;
-
-    .heart {
-      font-size: 1.5em;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--text-color);
-      transition: all 0.3s ease;
-      padding: 0.5rem;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      &:hover {
-        color: var(--secundary-color);
-        background-color: rgba(0, 0, 0, 0.05);
-      }
-
-      &.favorited {
-        color: #ff4081;
-      }
-    }
-
-    .knew-more-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: none;
-      cursor: pointer;
-      padding: 0.625rem 1.25rem;
-      background-color: var(--secundary-color);
-      border-radius: 2rem;
-      transition: all 0.3s ease;
-
-      &:hover {
-        opacity: 0.9;
-        transform: translateY(-1px);
-      }
-
-      .know {
-        color: var(--text-color);
-        background-color: var(--secundary-color);
-        font-size: 1.1em;
-        margin-right: 0.3125rem;
-      }
-
-      .text-wrapper {
-        font-family: "Inter", Helvetica;
-        font-weight: 300;
-        color: var(--text-color);
-        background-color: var(--secundary-color);
-        font-size: 0.9em;
-      }
-    }
   }
 }
 
-[data-theme="light"] {
+.planet-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  flex-direction: column;
+  
   .earth-icon {
-    border-color: var(--text-color);
-    
-    i {
-      color: var(--text-color);
-    }
-  }
-  .planet-label {
+    font-size: 3rem;
     color: var(--text-color);
   }
+  
+  .planet-label {
+    margin-top: -5%;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    opacity: 0.9;
+  }
 }
 
-@media only screen and (max-width: 48rem) {
+.title-container {
+  margin-bottom: 1.75rem;
+  
+  &-title {
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    color: var(--text-color);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  
+  &-code {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    opacity: 0.8;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  .knew-more-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    padding: 0.625rem 1.25rem;
+    background-color: var(--secundary-color);
+    border-radius: 2rem;
+    transition: background-color 0.2s ease;
+    
+    &:hover {
+      background-color: var(--secundary-hover-color);
+    }
+    
+    .know {
+      color: var(--text-color);
+      font-size: 1.1em;
+      margin-right: 0.3125rem;
+    }
+    
+    .text-wrapper {
+      font-weight: 300;
+      color: var(--text-color);
+      font-size: 0.9em;
+    }
+  }
+  
+  .heart {
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+    opacity: 0.7;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      opacity: 1;
+      color: #ff4757;
+    }
+    
+    &.favorite {
+      color: #ff4757;
+      opacity: 1;
+    }
+  }
+}
+
+:host ::ng-deep .character-dialog {
+  .p-dialog-content {
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  @media (max-width: 48rem) {
+    .p-dialog {
+      margin: 0;
+      max-height: 95vh;
+      position: fixed;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) !important;
+    }
+  }
+}
+
+
+@media only screen and (max-width: 1200px) {
   .card-location {
-    .earth-icon {
-      width: 3.5rem;
-      height: 3.5rem;
+    flex: 0 0 calc(20% - 1.2rem);
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .card-location {
+    flex: 0 0 calc(25% - 1.1rem);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .locations-horizontal-scroll {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .card-location {
+    flex: 0 0 calc(33.333% - 0.9rem); 
+    padding: 1.1rem;
+    min-width: 180px;
+  }
+  
+  .title-container {
+    margin-bottom: 1.25rem;
+    
+    &-title {
+      font-size: 1.1rem;
+    }
+    
+    &-code {
+      font-size: 0.85rem;
+    }
+  }
+  
+  .button-container {
+    .knew-more-btn {
+      padding: 0.5rem 1rem;
       
-      i {
-        font-size: 1.8rem;
+      .know {
+        font-size: 1em;
+        margin-right: 0.25rem;
+      }
+      
+      .text-wrapper {
+        font-size: 0.8em;
       }
     }
     
-    .button-container {
-      margin-top: 0.5em;
-
-      .knew-more-btn {
-        padding: 0.25rem 0.5rem;
-
-        .know {
-          font-size: 0.8em;
-          margin-right: 0.125rem;
-        }
-
-        .text-wrapper {
-          font-size: 0.65em;
-        }
-      }
-
-      .heart {
-        font-size: 1em;
-        padding: 0.4rem;
-      }
+    .heart {
+      font-size: 1.3em;
     }
   }
 }
 
-@media only screen and (max-width: 30rem) {
+@media only screen and (max-width: 576px) {
   .card-location {
-    .button-container {
-      .knew-more-btn {
-        padding: 0.375rem 0.625rem;
-
-        .know {
-          font-size: 0.9em;
-          margin-right: 0.1875rem;
-        }
-
-        .text-wrapper {
-          font-size: 0.7em;
-        }
+    flex: 0 0 calc(50% - 0.5rem);
+    min-width: 160px;
+    padding: 1rem;
+  }
+  
+  .planet-container {
+    margin-bottom: 1rem;
+    
+    .earth-icon {
+      font-size: 1.5rem;
+    }
+    
+    .planet-label {
+      font-size: 0.9rem;
+    }
+  }
+  
+  .title-container {
+    margin-bottom: 1rem;
+    
+    &-title {
+      font-size: 1rem;
+    }
+    
+    &-code {
+      font-size: 0.8rem;
+    }
+  }
+  
+  .button-container {
+    .knew-more-btn {
+      padding: 0.4rem 0.8rem;
+      
+      .know {
+        font-size: 0.9em;
       }
-
-      .heart {
-        font-size: 1.2em;
+      
+      .text-wrapper {
+        font-size: 0.75em;
       }
+    }
+    
+    .heart {
+      font-size: 1.2em;
     }
   }
 }
 
-@media only screen and (max-width: 20rem) {
+@media only screen and (max-width: 400px) {
   .card-location {
-    .button-container {
-      .knew-more-btn {
-        padding: 0.3125rem 0.625rem;
+    min-width: 140px;
+    padding: 0.8rem;
+  }
+  
+  .button-container {
+    .knew-more-btn {
+      padding: 0.35rem 0.7rem;
+      opacity: 1;
+      .text-wrapper {
+        font-size: 0.7em;
       }
     }
   }

@@ -1,7 +1,7 @@
-<section class="location-section">
+<section class="locations-section">
   <div class="section-header">
     <h2>Locations</h2>
-    <button class="btn" routerLink="/characters">
+    <button class="btn" routerLink="/locations">
       <i class="pi pi-objects-column"></i> See all
     </button>
   </div>
@@ -9,8 +9,8 @@
   <div class="grid-container">
     <div class="grid">
       <app-card-location
-        *ngFor="let location of locations"
-        [location]="location"
+        *ngFor="let l of locations"
+        [location]="l"
       ></app-card-location>
     </div>
   </div>
