@@ -23,6 +23,11 @@ export class CharacterSectionComponent implements OnInit {
 
   responsiveOptions = [
     {
+      breakpoint: '1440px',
+      numVisible: 4,
+      numScroll: 1
+    },
+    {
       breakpoint: '1024px',
       numVisible: 3,
       numScroll: 1
