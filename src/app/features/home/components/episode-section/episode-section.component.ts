@@ -4,11 +4,12 @@ import { EpisodeService } from '@core/services/episode.service';
 import { Episode } from '@core/models/episode.model';
 import { CardEpisodeComponent } from '@shared/components/cards/card-episode/card-episode.component';
 import { forkJoin } from 'rxjs';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-episode-section',
   standalone: true,
-  imports: [CommonModule, CardEpisodeComponent],
+  imports: [CommonModule, CardEpisodeComponent, RouterModule],
   templateUrl: './episode-section.component.html',
   styleUrl: './episode-section.component.scss',
 })

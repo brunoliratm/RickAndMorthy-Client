@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@core/config/environment';
+import { ApiInfo } from '@core/models/api-info.model';
 import { Character } from '@core/models/character.model';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -21,11 +22,30 @@ export class CharacterService {
     species?: string;
     type?: string;
     gender?: string;
-  }): Observable<{ results: Character[] }> {
-    return this.http.get<{ results: Character[] }>(this.API_URL, { params });
+  }): Observable<{ info: ApiInfo; results: Character[] }> {
+    return this.http
+      .get<{ info: ApiInfo; results: Character[] }>(this.API_URL, { params })
+      .pipe(
+        map((response) => ({
+          ...response,
+          results: response.results.map((character) => ({
+            ...character,
+            location: {
+              name: character.location?.name || 'Unknown',
+            },
+          })),
+        }))
+      );
   }
 
   getCharacterById(id: number): Observable<Character> {
-    return this.http.get<Character>(`${this.API_URL}/${id}`);
+    return this.http.get<Character>(`${this.API_URL}/${id}`).pipe(
+      map((character) => ({
+        ...character,
+        location: {
+          name: character.location?.name || 'Unknown',
+        },
+      }))
+    );
   }
 }

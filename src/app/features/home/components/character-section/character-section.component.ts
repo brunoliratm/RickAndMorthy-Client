@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { Character } from '@core/models/character.model';
 import { CharacterService } from '@core/services/character.service';
 import { CardCharacterComponent } from '@shared/components/cards/card-character/card-character.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-character-section',
   standalone: true,
-  imports: [CommonModule, CardCharacterComponent],
+  imports: [CommonModule, CardCharacterComponent, RouterModule],
   templateUrl: './character-section.component.html',
   styleUrl: './character-section.component.scss',
 })

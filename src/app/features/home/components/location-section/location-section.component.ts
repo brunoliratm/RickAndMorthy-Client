@@ -1,13 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Location, LocationService } from '@core/services/location.service';
+import { Location } from '@core/models/location.model';
+import { LocationService } from '@core/services/location.service';
 import { CardLocationComponent } from '@shared/components/cards/card-location/card-location.component';
 import { forkJoin } from 'rxjs';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-location-section',
   standalone: true,
-  imports: [CommonModule, CardLocationComponent],
+  imports: [CommonModule, CardLocationComponent, RouterModule],
   templateUrl: './location-section.component.html',
   styleUrl: './location-section.component.scss',
 })

@@ -3,9 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '@core/config/environment';
 import { Episode } from '@core/models/episode.model';
+import { ApiInfo } from '@core/models/api-info.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EpisodeService {
   private readonly API_URL = `${environment.apiBaseUrl}/episodes`;
@@ -17,8 +18,9 @@ export class EpisodeService {
     name?: string;
     episode?: string;
     sort?: string;
-  }): Observable<{ results: Episode[] }> {
-    return this.http.get<{ results: Episode[] }>(this.API_URL, { params });
+  }): Observable<{ info: ApiInfo; results: Episode[] }> {
+    return this.http.get<{ info: ApiInfo; results: Episode[] }>(this.API_URL, {
+      params,
+    });
   }
 }
-

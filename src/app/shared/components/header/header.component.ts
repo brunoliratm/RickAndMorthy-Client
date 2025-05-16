@@ -1,8 +1,15 @@
-import { Component, Renderer2, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  Renderer2,
+  AfterViewInit,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
-import { ModalRegisterDialogComponent } from "../dialogs/modal-register-dialog/modal-register-dialog.component";
+import { ModalRegisterDialogComponent } from '../dialogs/modal-register-dialog/modal-register-dialog.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,11 +17,12 @@ import { ModalRegisterDialogComponent } from "../dialogs/modal-register-dialog/m
     CommonModule,
     ButtonModule,
     DialogModule,
-    ModalRegisterDialogComponent
+    ModalRegisterDialogComponent,
+    RouterModule,
   ],
   standalone: true,
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements AfterViewInit {
   @ViewChild('themeBtn') themeBtn!: ElementRef;
@@ -26,14 +34,23 @@ export class HeaderComponent implements AfterViewInit {
   constructor(private renderer: Renderer2) {}
 
   ngAfterViewInit(): void {
-    const current = document.documentElement.getAttribute('data-theme') ?? 'dark';
+    const current =
+      document.documentElement.getAttribute('data-theme') ?? 'dark';
 
     if (this.themeIcon && this.themeText) {
       const iconClass = current === 'light' ? 'pi pi-moon' : 'pi pi-sun';
       const text = current === 'light' ? 'Dark Mode' : 'Light Mode';
 
-      this.renderer.setAttribute(this.themeIcon.nativeElement, 'class', iconClass);
-      this.renderer.setProperty(this.themeText.nativeElement, 'textContent', text);
+      this.renderer.setAttribute(
+        this.themeIcon.nativeElement,
+        'class',
+        iconClass
+      );
+      this.renderer.setProperty(
+        this.themeText.nativeElement,
+        'textContent',
+        text
+      );
     }
   }
 
@@ -47,12 +64,20 @@ export class HeaderComponent implements AfterViewInit {
       const iconClass = next === 'light' ? 'pi pi-moon' : 'pi pi-sun';
       const text = next === 'light' ? 'Dark Mode' : 'Light Mode';
 
-      this.renderer.setAttribute(this.themeIcon.nativeElement, 'class', iconClass);
-      this.renderer.setProperty(this.themeText.nativeElement, 'textContent', text);
+      this.renderer.setAttribute(
+        this.themeIcon.nativeElement,
+        'class',
+        iconClass
+      );
+      this.renderer.setProperty(
+        this.themeText.nativeElement,
+        'textContent',
+        text
+      );
     }
 
     if (this.logotype) {
-      this.logotype.nativeElement.src = `assets/icon-${next}.svg`
+      this.logotype.nativeElement.src = `assets/icon-${next}.svg`;
     }
   }
 

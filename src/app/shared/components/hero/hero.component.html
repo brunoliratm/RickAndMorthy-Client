@@ -9,18 +9,18 @@
         <span>Characters, locations, episodes and more</span>
       </div>
       <div class="third-division">
-        <button class="third-division__actions">
+        <a class="third-division__actions" [routerLink]="['/characters']">
           <i class="pi pi-face-smile"></i>
           <span>Characters</span>
-        </button>
-        <button class="third-division__actions">
+        </a>
+        <a class="third-division__actions" [routerLink]="['/locations']">
           <i class="pi pi-globe"></i>
           <span>Locations</span>
-        </button>
-        <button class="third-division__actions">
+        </a>
+        <a class="third-division__actions" [routerLink]="['/episodes']">
           <i class="pi pi-play-circle"></i>
           <span>Episodes</span>
-        </button>
+        </a>
       </div>
     </div>
   </div>
