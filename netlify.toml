@@ -1,6 +1,6 @@
 [build]
   command = "ng build --configuration production"
-  publish = "dist/rick-and-morty-client"
+  publish = "dist/rick-and-morty-client/browser"
 
 [[redirects]]
   from = "/*"
