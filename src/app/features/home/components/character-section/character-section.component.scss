@@ -3,6 +3,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 1.5rem;
+    padding-left: 2.5em;
 
     h2 {
       font-size: 1.6rem;
@@ -45,22 +46,10 @@
   .grid-container {
     width: 100%;
     position: relative;
-    overflow-x: auto;
-
-    @media only screen and (max-width: 768px) {
-      -webkit-overflow-scrolling: touch;
-      scroll-behavior: smooth;
-      padding-bottom: 10px;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-    }
   }
 
   .grid {
     width: 100%;
-    display: flex;
     flex-wrap: nowrap;
     gap: 1rem;
     margin-bottom: 2em;
@@ -68,17 +57,6 @@
     app-card-character {
       width: 250px;
       flex: 0 0 auto;
-    }
-
-    @media only screen and (max-width: 768px) {
-      flex-wrap: nowrap;
-      width: max-content;
-      padding-right: 1rem;
-
-      app-card-character {
-        width: 180px;
-        flex: 0 0 auto;
-      }
     }
   }
 }
