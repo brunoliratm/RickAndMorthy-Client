@@ -1,3 +1,3 @@
 export const environment = {
-  apiBaseUrl: 'https://rickandmortyapi.com/api'
+  apiBaseUrl: 'https://rick-morty-databases.up.railway.app/api/v1'
 };
