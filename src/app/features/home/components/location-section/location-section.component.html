@@ -7,11 +7,16 @@
   </div>
 
   <div class="grid-container">
-    <div class="grid">
-      <app-card-location
-        *ngFor="let l of locations"
-        [location]="l"
-      ></app-card-location>
-    </div>
+    <p-carousel 
+      [value]="locations" 
+      [numVisible]="7" 
+      [numScroll]="1"   
+      [circular]="true"
+      [responsiveOptions]="responsiveOptions"
+    >
+      <ng-template pTemplate="item" let-location>
+        <app-card-location [location]="location"></app-card-location>
+      </ng-template>
+    </p-carousel>
   </div>
 </section>
