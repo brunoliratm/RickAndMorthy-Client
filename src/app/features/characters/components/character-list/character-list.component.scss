@@ -1,9 +1,15 @@
+$mobile-breakpoint: 480px;
+$tablet-breakpoint: 768px;
+$border-radius-standard: 5rem;
+$border-radius-card: 1.2rem;
+$spacing-standard: 1rem;
+
 :host ::ng-deep {
   .p-menubar {
     background-color: var(--bg-color) !important;
     border: none !important;
 
-    @media only screen and (max-width: 7) {
+    @media only screen and (max-width: $tablet-breakpoint) {
       padding: 0.5rem;
       flex-wrap: wrap;
 
@@ -17,7 +23,8 @@
         justify-content: space-between;
       }
     }
-    @media only screen and (max-width: 480px) {
+
+    @media only screen and (max-width: $mobile-breakpoint) {
       padding: 0.5rem 0.3rem;
       flex-direction: column;
 
@@ -36,18 +43,20 @@
       background-color: var(--secundary-color) !important;
       border: none !important;
       color: var(--text-color) !important;
-      border-radius: 5rem !important;
+      border-radius: $border-radius-standard !important;
     }
   }
 
-  .p-togglebutton:first-child {
-    border-top-left-radius: 5rem !important;
-    border-bottom-left-radius: 5rem !important;
-  }
+  .p-togglebutton {
+    &:first-child {
+      border-top-left-radius: $border-radius-standard !important;
+      border-bottom-left-radius: $border-radius-standard !important;
+    }
 
-  .p-togglebutton:last-child {
-    border-top-right-radius: 5rem !important;
-    border-bottom-right-radius: 5rem !important;
+    &:last-child {
+      border-top-right-radius: $border-radius-standard !important;
+      border-bottom-right-radius: $border-radius-standard !important;
+    }
   }
 
   .p-selectbutton .p-togglebutton {
@@ -58,28 +67,9 @@
 
   .p-togglebutton-checked .p-togglebutton-content {
     background-color: var(--secundary-color) !important;
-    border-radius: 5rem !important;
+    border-radius: $border-radius-standard !important;
   }
 
-  .p-popover {
-    .p-popover-content {
-      background-color: var(--primary-color);
-      color: var(--text-color);
-      border-radius: 0.5rem;
-    }
-
-    .p-popover-arrow {
-      border-color: var(--primary-color);
-    }
-
-    @media only screen and (max-width: 480px) {
-      max-width: 90vw;
-
-      .p-popover-content {
-        max-width: 90vw;
-      }
-    }
-  }
 }
 
 .p-inputgroup {
@@ -97,15 +87,15 @@
     background: transparent;
     border: none;
     color: var(--text-color);
-  }
 
-  input::placeholder {
-    color: var(--text-color) !important;
-  }
+    &::placeholder {
+      color: var(--text-color) !important;
+    }
 
-  input:focus {
-    outline: none;
-    box-shadow: none;
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
   }
 
   .p-inputgroup-addon,
@@ -125,7 +115,7 @@
     margin-right: 0.1rem;
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: $mobile-breakpoint) {
     padding: 0.05rem 0.3rem;
     width: 100%;
 
@@ -138,8 +128,8 @@
 .filters {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin: 1rem 0;
+  gap: $spacing-standard;
+  margin: $spacing-standard 0;
 
   input,
   select {
@@ -165,7 +155,7 @@
     color: var(--text-color);
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: $tablet-breakpoint) {
     gap: 0.5rem;
     justify-content: space-between;
 
@@ -185,7 +175,7 @@
     }
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: $mobile-breakpoint) {
     margin: 0.5rem 0;
     width: 100%;
     flex-wrap: nowrap;
@@ -212,7 +202,7 @@
 }
 
 .filters-start {
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: $mobile-breakpoint) {
     width: 100%;
     margin-bottom: 0;
 
@@ -223,10 +213,10 @@
 }
 
 .filter-dialog-content {
-  padding: 1rem 0;
+  padding: $spacing-standard 0;
 
   .p-field {
-    margin-bottom: 1rem;
+    margin-bottom: $spacing-standard;
 
     label {
       display: block;
@@ -235,7 +225,7 @@
     }
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: $mobile-breakpoint) {
     padding: 0.8rem 0;
 
     .p-field {
@@ -252,17 +242,17 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
-  margin: 1rem 1rem;
+  gap: $spacing-standard;
+  margin: $spacing-standard $spacing-standard;
   box-sizing: border-box;
   width: 100%;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: $tablet-breakpoint) {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 0.8rem;
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: $mobile-breakpoint) {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 0.7rem;
     margin: 0.8rem 0 0.8rem 0.6rem;
@@ -279,17 +269,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: $spacing-standard;
 
   button {
     padding: 0.4rem 1rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 25px;
     background-color: var(--color-primary);
     color: var(--text-color);
     cursor: pointer;
     display: flex;
-    border-radius: 25px;
     align-items: center;
     gap: 0.3rem;
 
@@ -299,13 +288,12 @@
     }
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: $mobile-breakpoint) {
     margin-top: 1.5rem;
     gap: 0.7rem;
 
     button {
       padding: 0.5rem 0.8rem;
-      border-radius: 25px;
       min-width: 80px;
       font-size: 0.9rem;
     }

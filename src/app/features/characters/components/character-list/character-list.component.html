@@ -1,63 +1,77 @@
-<p-menubar>
-  <ng-template #start>
-    <section class="filters filters-start" [formGroup]="filterForm">
-      <div class="p-inputgroup">
-        <input
-          type="text"
-          pInputText
-          placeholder="Name"
-          formControlName="name"
+<header>
+  <p-menubar>
+    <ng-template #start>
+      <section class="filters filters-start" [formGroup]="filterForm">
+        <div class="p-inputgroup">
+          <input
+            type="text"
+            pInputText
+            placeholder="Search by name"
+            formControlName="name"
+            aria-label="Search characters by name"
+          />
+          <span class="p-inputgroup-addon">
+            <i class="pi pi-search" aria-hidden="true"></i>
+          </span>
+        </div>
+      </section>
+    </ng-template>
+    <ng-template #end>
+      <section class="filters" [formGroup]="filterForm">
+        <p-selectbutton
+          [options]="stateOptions"
+          formControlName="direction"
+          optionLabel="label"
+          optionValue="value"
+          aria-label="Sort direction"
         />
-        <span class="p-inputgroup-addon">
-          <i class="pi pi-search"></i>
-        </span>
-      </div>
-    </section>
-  </ng-template>
-  <ng-template #end>
-    <section class="filters" [formGroup]="filterForm">
-      <p-selectbutton
-        [options]="stateOptions"
-        formControlName="direction"
-        optionLabel="label"
-        optionValue="value"
-      />
 
-      <select formControlName="species">
-        <option *ngFor="let species of speciesOptions" [value]="species.value">
-          {{ species.label }}
-        </option>
-      </select>
+        <select formControlName="species" aria-label="Filter by species">
+          <option
+            *ngFor="let species of speciesOptions"
+            [value]="species.value"
+          >
+            {{ species.label }}
+          </option>
+        </select>
 
-      <select formControlName="status">
-        <option *ngFor="let status of statusOptions" [value]="status.value">
-          {{ status.label }}
-        </option>
-      </select>
-    </section>
-  </ng-template>
-</p-menubar>
-<section class="grid">
-  <app-card-character
-    *ngFor="let character of characters"
-    [character]="character"
-  ></app-card-character>
-</section>
+        <select formControlName="status" aria-label="Filter by status">
+          <option *ngFor="let status of statusOptions" [value]="status.value">
+            {{ status.label }}
+          </option>
+        </select>
+      </section>
+    </ng-template>
+  </p-menubar>
+</header>
 
-<section class="pagination">
-  <button
-    class="pagination-btn"
-    (click)="prevPage()"
-    [disabled]="currentPage === 1"
-  >
-    <i class="pi pi-chevron-left"></i> Prev
-  </button>
-  <span class="page-info">Page {{ currentPage }} of {{ totalPages }}</span>
-  <button
-    class="pagination-btn"
-    (click)="nextPage()"
-    [disabled]="currentPage === totalPages"
-  >
-    Next <i class="pi pi-chevron-right"></i>
-  </button>
-</section>
+<main>
+  <section class="grid" aria-label="Character list">
+    <app-card-character
+      *ngFor="let character of characters"
+      [character]="character"
+    ></app-card-character>
+  </section>
+</main>
+
+<footer>
+  <nav class="pagination" aria-label="Character list pagination">
+    <button
+      class="pagination-btn"
+      (click)="prevPage()"
+      [disabled]="currentPage === 1"
+      aria-label="Go to previous page"
+    >
+      <i class="pi pi-chevron-left" aria-hidden="true"></i> Prev
+    </button>
+    <span class="page-info">Page {{ currentPage }} of {{ totalPages }}</span>
+    <button
+      class="pagination-btn"
+      (click)="nextPage()"
+      [disabled]="currentPage === totalPages"
+      aria-label="Go to next page"
+    >
+      Next <i class="pi pi-chevron-right" aria-hidden="true"></i>
+    </button>
+  </nav>
+</footer>
