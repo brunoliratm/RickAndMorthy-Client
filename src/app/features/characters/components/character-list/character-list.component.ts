@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Character } from '@core/models/character.model';
 import { CharacterService } from '@core/services/character.service';
@@ -68,7 +68,7 @@ export class CharacterListComponent implements OnInit, OnDestroy {
       name: [''],
       status: [''],
       species: [''],
-      direction: [''],
+      direction: ['ASC'],
     });
 
     this.loadCharacters();
