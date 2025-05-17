@@ -1,3 +1,8 @@
+:host ::ng-deep {
+  .p-carousel-viewport {
+    padding: 0.4rem 0;
+  }
+}
 .character-section {
   .section-header {
     display: flex;
