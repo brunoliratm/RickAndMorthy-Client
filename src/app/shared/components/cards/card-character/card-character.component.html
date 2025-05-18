@@ -6,25 +6,25 @@
       <h2 class="character-name">{{ character.name }}</h2>
       <ul class="information">
         <li class="info-item">
-          <i class="pi pi-wave-pulse"></i>
+          <i class="pi pi-wave-pulse" aria-hidden="true"></i>
           <span class="status">{{ character.status }}</span>
         </li>
         <li class="info-item">
-          <i class="pi pi-user"></i>
+          <i class="pi pi-user" aria-hidden="true"></i>
           <span class="species">{{ character.species }}</span>
         </li>
         <li class="info-item">
-          <i class="pi pi-map"></i>
+          <i class="pi pi-map" aria-hidden="true"></i>
           <span class="origin">{{ character.location.name }}</span>
         </li>
       </ul>
       <div class="button-container">
         <button class="knew-more-btn" type="button" (click)="openDialog()">
-          <i class="pi pi-info-circle know"></i>
+          <i class="pi pi-info-circle know" aria-hidden="true"></i>
           <span class="text-wrapper">Learn more</span>
         </button>
-        <button class="heart" aria-label="Add to favorites" type="button">
-          <i class="pi pi-heart"></i>
+        <button class="heart" type="button">
+          <i class="pi pi-heart" aria-hidden="true"></i>
         </button>
       </div>
     </div>

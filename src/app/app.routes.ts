@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { CharacterListComponent } from '@features/characters/pages/character-list/character-list.component';
-import { LocationListComponent } from '@features/locations/pages/location-list/location-list.component';
-import { EpisodeListComponent } from '@features/episodes/pages/episode-list/episode-list.component';
+import { CharacterPageComponent } from '@features/characters/pages/character-page/character-page.component';
+import { LocationPageComponent } from '@features/locations/pages/location-page/location-page.component';
+import { EpisodePageComponent } from '@features/episodes/pages/episode-page/episode-page.component';
 import { MainComponent } from '@features/home/pages/main/main.component';
 
 export const routes: Routes = [
@@ -11,14 +11,14 @@ export const routes: Routes = [
   },
   {
     path: 'characters',
-    component: CharacterListComponent,
+    component: CharacterPageComponent,
   },
   {
     path: 'locations',
-    component: LocationListComponent,
+    component: LocationPageComponent,
   },
   {
     path: 'episodes',
-    component: EpisodeListComponent,
+    component: EpisodePageComponent,
   },
 ];

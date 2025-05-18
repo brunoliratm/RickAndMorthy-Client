@@ -72,6 +72,10 @@
         &__actions:hover {
           background: var(--secundary-color);
         }
+
+        &__actions.active-link {
+          background-color: var(--secundary-color);
+        }
       }
     }
   }

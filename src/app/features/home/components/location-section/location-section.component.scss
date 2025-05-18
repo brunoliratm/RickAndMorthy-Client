@@ -1,3 +1,13 @@
+$mobile-breakpoint: 480px;
+$tablet-breakpoint: 768px;
+$spacing-standard: 1rem;
+
+:host ::ng-deep {
+  .p-carousel-viewport {
+    padding: 0.4rem 0;
+  }
+}
+
 .locations-section {
   .section-header {
     display: flex;
@@ -44,6 +54,7 @@
   .grid-container {
     width: 100%;
     position: relative;
+    padding: 0 0.5rem;
   }
 
   .grid {
@@ -51,6 +62,62 @@
   }
 }
 
-.p-carousel-items-content {
-  justify-content: center !important;
+:host ::ng-deep {
+  .p-carousel {
+    .p-carousel-content {
+      padding: 0 1rem;
+    }
+
+    .p-carousel-container {
+      padding: 0 2rem;
+    }
+
+    .p-carousel-items-content {
+      justify-content: center !important;
+    }
+
+    .p-carousel-indicators {
+      margin-top: 1rem;
+    }
+
+    .p-carousel-item {
+      padding: 0 0.5rem;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+    }
+
+    .p-carousel-prev,
+    .p-carousel-next {
+      background-color: var(--primary-color);
+      color: var(--text-color);
+      border-radius: 50%;
+      margin: 0 0.5rem;
+
+      &:hover {
+        background-color: var(--secundary-color);
+      }
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+
+  app-card-location {
+    display: block;
+    width: 220px;
+
+    @media (max-width: $tablet-breakpoint) {
+      width: 200px;
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+      width: 180px;
+    }
+
+    @media (max-width: 360px) {
+      width: 160px;
+    }
+  }
 }
