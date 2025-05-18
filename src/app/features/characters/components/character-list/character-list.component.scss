@@ -271,11 +271,15 @@ $spacing-standard: 1rem;
   justify-content: center;
   gap: $spacing-standard;
 
+  span {
+    color: var(--text-color);
+  }
+  
   button {
     padding: 0.4rem 1rem;
     border: none;
     border-radius: 25px;
-    background-color: var(--color-primary);
+    background-color: var(--secundary-color);
     color: var(--text-color);
     cursor: pointer;
     display: flex;

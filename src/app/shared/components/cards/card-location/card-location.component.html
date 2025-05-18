@@ -1,25 +1,28 @@
-<div class="card-location">
+<article class="card-location">
   <div class="planet-container">
-    <div class="earth-icon">
-        <i class="material-icons" style="font-size: 3rem;">public</i>
+    <div class="earth-icon" aria-hidden="true">
+      <i class="material-icons" style="font-size: 3rem">public</i>
     </div>
     <span class="planet-label">Planet</span>
   </div>
 
   <div class="title-container">
-    <p class="title-container-title">{{ location.name }}</p>
-    <p class="title-container-code">{{ location.dimension }}</p>
+    <h2 class="title-container-title">{{ location.name }}</h2>
+    <p class="title-container-dimension">{{ location.dimension }}</p>
+    <p class="title-container-type">{{ location.type }}</p>
   </div>
 
   <div class="button-container">
-  <button class="knew-more-btn" type="button" (click)="openDialog()">
-    <i class="pi pi-info-circle know"></i>
-    <span class="text-wrapper">Learn more</span>
-  </button>
-  <button class="heart" aria-label="Add to favorites" type="button">
-    <i class="pi pi-heart"></i>
-  </button>
-</div>
+    <button class="knew-more-btn" type="button" (click)="openDialog()">
+      <i class="pi pi-info-circle know" aria-hidden="true"></i>
+      <span class="text-wrapper">Learn more</span>
+    </button>
+    <button class="heart" type="button">
+      <i class="pi pi-heart" aria-hidden="true"></i>
+    </button>
+  </div>
+</article>
+
 <p-dialog
   [(visible)]="showDialog"
   [modal]="true"
@@ -30,7 +33,7 @@
   [showHeader]="false"
   appendTo="body"
   [baseZIndex]="10000"
-  styleClass="character-dialog"
+  styleClass="location-dialog"
   [dismissableMask]="true"
   [breakpoints]="{ '960px': '95vw', '640px': '100vw' }"
   [position]="'center'"

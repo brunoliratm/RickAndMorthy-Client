@@ -227,7 +227,7 @@ $spacing-standard: 1rem;
   @media only screen and (max-width: $mobile-breakpoint) {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 0.7rem;
-    margin: 0.8rem 0;
+    margin: 0.8rem 0 0.8rem 0.6rem;
   }
 
   @media only screen and (max-width: 360px) {

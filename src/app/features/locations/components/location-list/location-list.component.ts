@@ -1,9 +1,9 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Episode } from '@core/models/episode.model';
-import { EpisodeService } from '@core/services/episode.service';
-import { CardEpisodeComponent } from '@shared/components/cards/card-episode/card-episode.component';
+import { Location } from '@core/models/location.model';
+import { LocationService } from '@core/services/location.service';
+import { CardLocationComponent } from '@shared/components/cards/card-location/card-location.component';
 import { ButtonModule } from 'primeng/button';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
@@ -15,11 +15,11 @@ import { Subject, debounceTime, distinctUntilChanged, takeUntil } from 'rxjs';
 
 @Component({
   standalone: true,
-  selector: 'app-episode-list',
+  selector: 'app-location-list',
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    CardEpisodeComponent,
+    CardLocationComponent,
     MenubarModule,
     SelectButtonModule,
     ButtonModule,
@@ -28,21 +28,31 @@ import { Subject, debounceTime, distinctUntilChanged, takeUntil } from 'rxjs';
     InputTextModule,
     TooltipModule,
   ],
-  templateUrl: './episode-list.component.html',
-  styleUrl: './episode-list.component.scss',
+  templateUrl: './location-list.component.html',
+  styleUrl: './location-list.component.scss',
 })
-export class EpisodeListComponent implements OnInit, OnDestroy {
+export class LocationListComponent implements OnInit, OnDestroy {
   private fb = inject(FormBuilder);
-  private episodeService = inject(EpisodeService);
+  private locationService = inject(LocationService);
   private destroy$ = new Subject<void>();
 
-  episodes: Episode[] = [];
+  locations: Location[] = [];
   currentPage = 1;
   totalPages = 1;
   loading = false;
   stateOptions: any[] = [
-    { label: 'ASC', value: 'NAME' },
-    { label: 'DSC', value: 'NAME_DESC' },
+    { label: 'ASC', value: 'ASC' },
+    { label: 'DSC', value: 'DESC' },
+  ];
+  dimensionOptions: any[] = [
+    { label: 'All', value: '' },
+    { label: 'Unknown', value: 'unknown' },
+    { label: 'Dimension C-137', value: 'Dimension C-137' },
+    { label: 'Replacement Dimension', value: 'Replacement Dimension' },
+    {
+      label: 'Post-Apocalyptic Dimension',
+      value: 'Post-Apocalyptic Dimension',
+    },
   ];
 
   filterForm!: FormGroup;
@@ -50,16 +60,17 @@ export class EpisodeListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.filterForm = this.fb.group({
       name: [''],
-      sort: ['NAME'],
+      dimension: [''],
+      direction: ['ASC'],
     });
 
-    this.loadEpisodes();
+    this.loadLocations();
 
     this.filterForm.valueChanges
       .pipe(debounceTime(300), distinctUntilChanged(), takeUntil(this.destroy$))
       .subscribe(() => {
         this.currentPage = 1;
-        this.loadEpisodes();
+        this.loadLocations();
       });
   }
 
@@ -68,23 +79,25 @@ export class EpisodeListComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  loadEpisodes() {
+  loadLocations(): void {
     this.loading = true;
     const filters = this.filterForm.value;
 
     const params: any = { page: this.currentPage };
     if (filters.name) params.name = filters.name;
-    if (filters.sort) params.sort = filters.sort;
+    if (filters.dimension) params.dimension = filters.dimension;
+    if (filters.direction) params.direction = filters.direction;
 
-    this.episodeService.getEpisodes(params).subscribe({
+    this.locationService.getLocations(params).subscribe({
       next: (res) => {
-        this.episodes = res.results;
+        this.locations = res.results;
         this.totalPages = res.info.pages;
         this.loading = false;
       },
       error: (err) => {
+        console.error('Error loading locations:', err);
         this.loading = false;
-        this.episodes = [];
+        this.locations = [];
         this.totalPages = 1;
       },
     });
@@ -93,14 +106,14 @@ export class EpisodeListComponent implements OnInit, OnDestroy {
   nextPage(): void {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      this.loadEpisodes();
+      this.loadLocations();
     }
   }
 
   prevPage(): void {
     if (this.currentPage > 1) {
       this.currentPage--;
-      this.loadEpisodes();
+      this.loadLocations();
     }
   }
 }
