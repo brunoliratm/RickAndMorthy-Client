@@ -16,7 +16,6 @@ export class EpisodeService {
   getEpisodes(params: {
     page?: number;
     name?: string;
-    episode?: string;
     sort?: string;
   }): Observable<{ info: ApiInfo; results: Episode[] }> {
     return this.http.get<{ info: ApiInfo; results: Episode[] }>(this.API_URL, {
