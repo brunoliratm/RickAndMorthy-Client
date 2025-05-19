@@ -1,18 +1,24 @@
-.p-field {
-  margin-bottom: 1.5rem;
+input {
+  width: 100%;
+  padding: 1.2em;
+  border-radius: .85em;
+  border: 1px solid var(--text-color);
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
-.p-error {
-  display: block;
-  margin-top: 0.25rem;
-}
+::ng-deep button.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  z-index: 1;
 
-.p-button {
-  min-width: 150px;
-  padding: 0.75rem;
-}
-
-h1 {
-  margin-bottom: 2rem;
-  color: var(--primary-color);
+  &:hover {
+    border: none !important;
+    background-color: var(--secundary-color) !important;
+  }
 }

@@ -10,6 +10,7 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { ModalRegisterDialogComponent } from '../dialogs/modal-register-dialog/modal-register-dialog.component';
 import { RouterModule } from '@angular/router';
+import { ThemeService } from '@core/services/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -31,7 +32,10 @@ export class HeaderComponent implements AfterViewInit {
   @ViewChild('logotype') logotype!: ElementRef;
   displayModal: boolean = false;
 
-  constructor(private renderer: Renderer2) {}
+  constructor(
+    private renderer: Renderer2,
+    private themeService: ThemeService
+  ) {}
 
   ngAfterViewInit(): void {
     const current =
@@ -55,30 +59,7 @@ export class HeaderComponent implements AfterViewInit {
   }
 
   toggleTheme() {
-    const root = document.documentElement;
-    const current = root.getAttribute('data-theme') ?? 'dark';
-    const next = current === 'light' ? 'dark' : 'light';
-    root.setAttribute('data-theme', next);
-
-    if (this.themeIcon && this.themeText) {
-      const iconClass = next === 'light' ? 'pi pi-moon' : 'pi pi-sun';
-      const text = next === 'light' ? 'Dark Mode' : 'Light Mode';
-
-      this.renderer.setAttribute(
-        this.themeIcon.nativeElement,
-        'class',
-        iconClass
-      );
-      this.renderer.setProperty(
-        this.themeText.nativeElement,
-        'textContent',
-        text
-      );
-    }
-
-    if (this.logotype) {
-      this.logotype.nativeElement.src = `assets/icon-${next}.svg`;
-    }
+    this.themeService.toggleTheme();
   }
 
   showModal() {

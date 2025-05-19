@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
@@ -7,39 +7,50 @@ import { CommonModule } from '@angular/common';
 import { IftaLabelModule } from 'primeng/iftalabel';
 import { DialogModule } from 'primeng/dialog';
 import { FloatLabelModule } from 'primeng/floatlabel';
+import { ThemeService } from '@core/services/theme.service';
 
 @Component({
   selector: 'app-modal-register-dialog',
+  standalone: true,
   imports: [
-    CommonModule, 
-    ReactiveFormsModule, 
-    InputTextModule, 
-    PasswordModule, 
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    InputTextModule,
+    PasswordModule,
     ButtonModule,
     IftaLabelModule,
     DialogModule,
     FloatLabelModule
   ],
   templateUrl: './modal-register-dialog.component.html',
-  styleUrl: './modal-register-dialog.component.scss'
+  styleUrls: ['./modal-register-dialog.component.scss']
 })
-export class ModalRegisterDialogComponent {
-  form: FormGroup;
+export class ModalRegisterDialogComponent implements OnInit {
+  form!: FormGroup;
+  theme: 'light' | 'dark' = 'dark'
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private themeService: ThemeService
+  ) {}
+
+  ngOnInit() {
     this.form = this.fb.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', Validators.required]
     });
+
+    this.themeService.theme$.subscribe((theme) => this.theme = theme)
   }
 
   onSubmit() {
     if (this.form.valid) {
-      console.log(this.form.value);
+      console.log('Formulário válido:', this.form.value);
     } else {
-      this.form.markAllAsTouched();
+      console.log('Formulário inválido');
     }
   }
 }
