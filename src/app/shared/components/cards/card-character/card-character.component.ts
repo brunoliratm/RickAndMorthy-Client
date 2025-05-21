@@ -18,7 +18,7 @@ import { DialogModule } from 'primeng/dialog';
   styleUrl: './card-character.component.scss',
 })
 export class CardCharacterComponent {
-  @Input() character!: any;
+  @Input() character!: Character;
   showDialog = false;
 
   openDialog(): void {
