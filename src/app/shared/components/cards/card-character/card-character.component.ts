@@ -44,21 +44,25 @@ export class CardCharacterComponent {
     this.isFavorite = !this.isFavorite;
     this.favoritesService
       .toggleFavorite(this.character.id, this.isFavorite, ItemType.CHARACTER)
-      .subscribe((response) => {
-        if (this.isFavorite) {
+      .subscribe({
+        next: () => {
+          if (!this.isFavorite) {
+            return this.onRemove.emit(this.character.id)
+          }
+
           return this.messageService.add({
             severity: 'success',
             summary: 'Sucesso',
             detail: 'Item adicionado aos favoritos com sucesso',
           });
+        },
+        error: () => {
+          return this.messageService.add({
+            severity: 'error',
+            summary: 'Erro',
+            detail: 'Não foi possível adicionar item aos favoritos',
+          });
         }
-
-        this.onRemove.emit();
-        return this.messageService.add({
-          severity: 'warn',
-          summary: 'Erro',
-          detail: 'Não foi possível adicionar item aos favoritos',
-        });
       });
   }
 }

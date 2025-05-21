@@ -4,7 +4,7 @@ import { CardCharacterComponent } from '@shared/components/cards/card-character/
 import { ItemType } from '@core/enums/item-type';
 import { FavoritesService } from '@core/services/favorites.service';
 import { Favorite } from '@core/models/favorite.model';
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { CardEpisodeComponent } from '../../../../shared/components/cards/card-episode/card-episode.component';
 import { CardLocationComponent } from '@shared/components/cards/card-location/card-location.component';
 import { ButtonModule } from 'primeng/button';
@@ -27,6 +27,7 @@ import { debounceTime, distinctUntilChanged, Subject, takeUntil } from 'rxjs';
     ButtonModule,
     ReactiveFormsModule,
     SelectButtonModule,
+    CommonModule
   ],
   templateUrl: './favorites.component.html',
   styleUrl: './favorites.component.scss',
