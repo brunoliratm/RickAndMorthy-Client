@@ -1,0 +1,48 @@
+<app-hero></app-hero>
+
+<p-menubar>
+  <section class="filters" [formGroup]="filterForm">
+    <p-selectbutton
+      [options]="stateOptions"
+      formControlName="itemType"
+      optionLabel="label"
+      optionValue="value"
+      aria-label="itemType"
+    />
+  </section>
+</p-menubar>
+
+<section class="favorites">
+  <div class="favorites__container">
+    <h2 class="favorites__title">Meus favoritos</h2>
+    <div class="favorites__list">
+      <ng-container *ngIf="!isLoading">
+        <ng-container *ngIf="!favorites.length; else favoritesList">
+          <p class="favorites__empty">Sem favoritos.</p>
+        </ng-container>
+        <ng-template #favoritesList>
+          <div class="grid">
+            <app-card-character
+              *ngFor="let character of getFilteredCharacters()"
+              [character]="character.item_data"
+              [isFavorite]="true"
+              (onRemove)="favoriteRemoved()"
+            ></app-card-character>
+            <app-card-episode
+              *ngFor="let episode of getFilteredEpisodes()"
+              [episode]="episode.item_data"
+              [isFavorite]="true"
+              (onRemove)="favoriteRemoved()"
+            ></app-card-episode>
+            <app-card-location
+              *ngFor="let location of getFilteredLocations()"
+              [location]="location.item_data"
+              [isFavorite]="true"
+              (onRemove)="favoriteRemoved()"
+            ></app-card-location>
+          </div>
+        </ng-template>
+      </ng-container>
+    </div>
+  </div>
+</section>

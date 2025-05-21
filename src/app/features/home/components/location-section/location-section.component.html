@@ -11,10 +11,11 @@
       [value]="locations"
       [numScroll]="1"
       [numVisible]="6"
+      [circular]="false" 
       [responsiveOptions]="responsiveOptions"
     >
       <ng-template pTemplate="item" let-location>
-        <app-card-location [location]="location"></app-card-location>
+        <app-card-location [location]="location" [isFavorite]="location.isFavorite"></app-card-location>
       </ng-template>
     </p-carousel>
   </div>

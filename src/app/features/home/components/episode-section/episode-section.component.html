@@ -11,6 +11,7 @@
       <app-card-episode
         *ngFor="let episode of episodes"
         [episode]="episode"
+        [isFavorite]="episode.isFavorite || false"
       ></app-card-episode>
     </div>
   </div>

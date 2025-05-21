@@ -6,4 +6,5 @@ export interface Episode {
     releaseDate: string;
     episode: string;
     characters: Character[];
+    isFavorite?: boolean;
 }
