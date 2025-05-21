@@ -46,21 +46,25 @@ export class CardLocationComponent {
     this.isFavorite = !this.isFavorite;
     this.favoritesService
       .toggleFavorite(this.location.id, this.isFavorite, ItemType.LOCATION)
-      .subscribe((response) => {
-        if (this.isFavorite) {
+      .subscribe({
+        next: () => {
+          if (!this.isFavorite) {
+            return this.onRemove.emit(this.location.id)
+          }
+
           return this.messageService.add({
             severity: 'success',
             summary: 'Sucesso',
             detail: 'Item adicionado aos favoritos com sucesso',
           });
+        },
+        error: () => {
+          return this.messageService.add({
+            severity: 'error',
+            summary: 'Erro',
+            detail: 'Não foi possível adicionar item aos favoritos',
+          });
         }
-
-        this.onRemove.emit()
-        return this.messageService.add({
-          severity: 'warn',
-          summary: 'Erro',
-          detail: 'Não foi possível adicionar item aos favoritos',
-        });
       });
   }
 }

@@ -21,25 +21,33 @@
           <p class="favorites__empty">Sem favoritos.</p>
         </ng-container>
         <ng-template #favoritesList>
-          <div class="grid">
-            <app-card-character
-              *ngFor="let character of getFilteredCharacters()"
-              [character]="character.item_data"
-              [isFavorite]="true"
-              (onRemove)="favoriteRemoved()"
-            ></app-card-character>
-            <app-card-episode
-              *ngFor="let episode of getFilteredEpisodes()"
-              [episode]="episode.item_data"
-              [isFavorite]="true"
-              (onRemove)="favoriteRemoved()"
-            ></app-card-episode>
-            <app-card-location
-              *ngFor="let location of getFilteredLocations()"
-              [location]="location.item_data"
-              [isFavorite]="true"
-              (onRemove)="favoriteRemoved()"
-            ></app-card-location>
+          <div class="grid" [ngSwitch]="filterForm.get('itemType')?.value">
+            <ng-container *ngSwitchCase="'CHARACTER'">
+              <app-card-character
+                *ngFor="let character of getFilteredCharacters()"
+                [character]="character.item_data"
+                [isFavorite]="true"
+                (onRemove)="favoriteRemoved()"
+              ></app-card-character>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="'EPISODE'">
+              <app-card-episode
+                *ngFor="let episode of getFilteredEpisodes()"
+                [episode]="episode.item_data"
+                [isFavorite]="true"
+                (onRemove)="favoriteRemoved()"
+              ></app-card-episode>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="'LOCATION'">
+              <app-card-location
+                *ngFor="let location of getFilteredLocations()"
+                [location]="location.item_data"
+                [isFavorite]="true"
+                (onRemove)="favoriteRemoved()"
+              ></app-card-location>
+            </ng-container>
           </div>
         </ng-template>
       </ng-container>
