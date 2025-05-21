@@ -50,15 +50,17 @@ export class UserService {
     newPassword: string,
     confirmNewPassword: string
   ): Observable<any> {
-    return this.httpClient.post(`${this.userUrl}/forgot-password`, null, {
+    const body = {
+      currentPassword,
+      newPassword,
+      confirmNewPassword
+    };
+
+    return this.httpClient.post(`${this.userUrl}/forgot-password`, body, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.authService.getToken()}`,
-      }),
-      params: {
-        currentPassword,
-        newPassword,
-        confirmNewPassword,
-      },
+        'Content-Type': 'application/json'
+      })
     });
   }
 }
