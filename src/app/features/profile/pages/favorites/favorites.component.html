@@ -1,0 +1,33 @@
+<app-hero></app-hero>
+
+<section class="favorites">
+    <div class="favorites__container">
+        <h2 class="favorites__title">My Favorites</h2>
+        <div class="favorites__list">
+            <ng-container *ngIf="!isLoading">
+                <ng-container *ngIf="!favorites.length; else favoritesList">
+                    <p class="favorites__empty">Sem favoritos.</p>
+                </ng-container>
+                <ng-template #favoritesList>
+                    <div class="grid">
+                        <app-card-character
+                            *ngFor="let character of getFilteredCharacters()"
+                            [character]="character.item_data"
+                        ></app-card-character>
+<<<<<<< HEAD
+                        <app-card-episode
+                            *ngFor="let episode of getFilteredEpisodes()"
+                            [episode]="episode.item_data"
+                        ></app-card-episode>
+                        <app-card-location
+                            *ngFor="let location of getFilteredLocations()"
+                            [location]="location.item_data"
+                        ></app-card-location>
+=======
+>>>>>>> 916452b9005f111f385919a51e487c7d0f3a4176
+                    </div>
+                </ng-template>
+            </ng-container>
+        </div>
+    </div>
+</section>

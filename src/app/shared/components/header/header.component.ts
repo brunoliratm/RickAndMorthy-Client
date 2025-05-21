@@ -8,7 +8,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ThemeService } from '@core/services/theme.service';
 import { AuthService } from '@core/services/auth.service';
 import { MenuModule } from 'primeng/menu';
@@ -36,6 +36,7 @@ export class HeaderComponent implements AfterViewInit {
   
   items = [
     { label: 'Editar perfil', icon: 'pi pi-pencil', command: () => this.editar() },
+    { label: 'Favoritos', icon: 'pi pi-heart', command: () => this.redirectsToFavoritesPage() },
     { separator: true },
     { label: 'Sair', icon: 'pi pi-sign-out', command: () => this.logout() }
   ];
@@ -43,7 +44,8 @@ export class HeaderComponent implements AfterViewInit {
   constructor(
     private renderer: Renderer2,
     private themeService: ThemeService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -87,5 +89,9 @@ export class HeaderComponent implements AfterViewInit {
 
   logout() {
     this.authService.logout();
+  }
+
+  redirectsToFavoritesPage() {
+    this.router.navigate(['/profile/favorites']);
   }
 }
