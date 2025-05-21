@@ -1,65 +1,43 @@
-.register-page {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.login-modal {
   padding: 1em 2em;
-
-  &__left,
-  &__right {
-    width: 50%;
-  }
-
-  &__right img {
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    max-width: 100%;
-    height: auto;
-  }
-}
-
-.register-card {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 1em;
-  justify-content: center;
+  justify-content: space-between;
+
+  &__card {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    justify-content: center;
+  }
 
   &__title {
     margin-bottom: 0.5em;
     font-size: 2em;
     text-align: center;
   }
-}
 
-.register-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1em;
-  width: 100%;
-
-  &__row {
+  &__form {
     display: flex;
-    gap: 0.75em;
+    flex-direction: column;
+    gap: 1em;
     width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    input {
+      width: 100%;
+      padding: 1.2em;
+      border-radius: 0.85em;
+      border: 1px solid var(--text-color);
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
   }
 
-  &__input {
-    width: 100%;
-    padding: 1.2em;
-    border-radius: 0.85em;
-    border: 1px solid var(--text-color);
-    background-color: var(--bg-color);
-    color: var(--text-color);
-  }
-
-  &__submit-button {
-    width: 100%;
-    cursor: pointer;
-  }
-
-  &__errors {
+  &__error-box {
     background-color: #fde2e4;
     border: 1px solid #f5c2c7;
     color: #842029;
@@ -74,17 +52,25 @@
       margin: 0;
       padding-left: 1rem;
     }
-
-    li {
-      margin-bottom: 0.3em;
-    }
   }
 
-  &__footer {
+  &__switch {
     text-align: center;
+    margin-top: 1rem;
 
     a {
       color: #4fc3f7;
+    }
+  }
+
+  &__image {
+    width: 50%;
+
+    img {
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      height: auto;
+      max-width: 100%;
     }
   }
 }
@@ -106,21 +92,21 @@
 }
 
 @media screen and (max-width: 768px) {
-  .register-page {
+  .login-modal {
     padding: 2em;
 
-    &__left {
+    &__card {
       width: 100%;
     }
 
-    &__right {
+    &__image {
       display: none;
     }
   }
 }
 
 @media screen and (max-width: 425px) {
-  .register-page {
+  .login-modal {
     &__title {
       font-size: 1.8em;
     }
@@ -132,7 +118,7 @@
 }
 
 @media screen and (max-width: 425px) {
-  .register-page {
+  .login-modal {
     &__title {
       font-size: 1.4em;
     }
@@ -140,9 +126,5 @@
     &__switch {
       font-size: .8em;
     }
-  }
-  
-  .register-form__row {
-    flex-direction: column;
   }
 }

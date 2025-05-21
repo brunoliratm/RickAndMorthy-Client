@@ -1,54 +1,51 @@
-<section style="padding: 1em 2em; justify-content: space-between; display: flex; align-items: center;">
-    <div style="width: 50%;">
-        <div class="card"
-            style="display: flex;flex-direction: column;align-items: center;gap: 1em;justify-content: center;">
-            <h1 style="margin-bottom: .5em; font-size: 2em; text-align: center;">Registre-se</h1>
+<section class="register-page">
+  <div class="register-page__left">
+    <div class="register-card">
+      <h1 class="register-card__title">Registre-se</h1>
 
-            <form [formGroup]="form" (ngSubmit)="onSubmit()"
-                style="display: flex; align-items: center; justify-content: center;flex-direction: column; gap: 1em;">
-                <div style="display: flex; gap: .75em; width: 100%;">
-                    <input id="name" formControlName="name" placeholder="Name">
-                    <input id="surname" formControlName="surname" placeholder="Surname">
-                </div>
-
-                <input id="email" formControlName="email" placeholder="E-mail">
-
-                <input type="password" id="password" formControlName="password" placeholder="Password">
-
-                <small *ngIf="form.invalid && form.touched" class="p-error" style="
-                    background-color: #fde2e4;
-                    border: 1px solid #f5c2c7;
-                    color: #842029;
-                    padding: 1em;
-                    border-radius: 8px;
-                    width: 100%;
-                    text-align: left;
-                    font-weight: bold;
-                    box-shadow: 0 0 4px rgba(0,0,0,0.1);
-                ">
-                    <ul class="p-error" style="margin: 0; padding-left: 1rem;">
-                        <li *ngIf="form.get('name')?.errors?.['required']">Nome é obrigatório.</li>
-                        <li *ngIf="form.get('surname')?.errors?.['required']">Sobrenome é obrigatório.</li>
-                        <li *ngIf="form.get('email')?.errors?.['required']">E-mail é obrigatório.</li>
-                        <li *ngIf="form.get('email')?.errors?.['email']">E-mail inválido.</li>
-                        <li *ngIf="form.get('password')?.errors?.['required']">Senha é obrigatória.</li>
-                    </ul>
-                </small>
-
-                <button pButton type="submit" style="width: 100%; cursor: pointer;" label="Entrar" icon="pi pi-sign-in"
-                    class="p-button-danger p-button-rounded p-mt-3" [disabled]="form.invalid">
-                </button>
-
-                <div class="p-mt-3" style="text-align: center;">
-                    <span>Já tem uma conta? <a [routerLink]="['/login']" routerLinkActive="router-link-active"
-                            style="color: #4fc3f7;">entre aqui</a></span>
-                </div>
-            </form>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="register-form">
+        <div class="register-form__row">
+          <input id="name" formControlName="name" placeholder="Nome" class="register-form__input" />
+          <input id="surname" formControlName="surname" placeholder="Sobrenome" class="register-form__input" />
         </div>
-    </div>
 
-    <div style="width: 50%;">
-        <img [src]="`assets/register-bg-${theme}.svg`"
-            style="aspect-ratio: 1 / 1; object-fit: cover; height: auto; max-width: 100%;">
+        <input id="email" formControlName="email" placeholder="E-mail" class="register-form__input" />
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="Senha"
+          class="register-form__input"
+        />
+
+        <small
+          *ngIf="form.invalid && form.touched"
+          class="register-form__errors"
+        >
+          <ul>
+            <li *ngIf="form.get('name')?.errors?.['required']">Nome é obrigatório.</li>
+            <li *ngIf="form.get('surname')?.errors?.['required']">Sobrenome é obrigatório.</li>
+            <li *ngIf="form.get('email')?.errors?.['required']">E-mail é obrigatório.</li>
+            <li *ngIf="form.get('email')?.errors?.['email']">E-mail inválido.</li>
+            <li *ngIf="form.get('password')?.errors?.['required']">Senha é obrigatória.</li>
+          </ul>
+        </small>
+
+        <button pButton type="submit" style="width: 100%; cursor: pointer;" label="Entrar" icon="pi pi-sign-in"
+            class="p-button-danger p-button-rounded p-mt-3" [disabled]="form.invalid">
+        </button>
+
+        <div class="register-form__footer">
+          <span>
+            Já tem uma conta?
+            <a [routerLink]="['/login']" routerLinkActive="router-link-active">entre aqui</a>
+          </span>
+        </div>
+      </form>
     </div>
+  </div>
+
+  <div class="register-page__right">
+    <img [src]="`assets/register-bg-${theme}.svg`" alt="Ilustração" />
+  </div>
 </section>

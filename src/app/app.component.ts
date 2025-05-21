@@ -10,6 +10,7 @@ import { filter } from 'rxjs/operators';
 import { ModalRegisterDialogComponent } from '@shared/components/dialogs/modal-register-dialog/modal-register-dialog.component';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
+import { ModalLoginDialogComponent } from '@shared/components/dialogs/modal-login-dialog/modal-login-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,7 @@ import { ButtonModule } from 'primeng/button';
     FooterComponent,
     ToastModule,
     ModalRegisterDialogComponent,
+    ModalLoginDialogComponent,
     DialogModule,
     ButtonModule
   ],
@@ -31,6 +33,7 @@ import { ButtonModule } from 'primeng/button';
 export class AppComponent implements OnInit {
   title = 'RickAndMorty-Client';
   showRegisterModal: boolean = false
+  showLoginModal: boolean = false
 
   constructor(
     private authService: AuthService,
@@ -48,12 +51,13 @@ export class AppComponent implements OnInit {
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       this.showRegisterModal = event.url === '/register';
+      this.showLoginModal = event.url === '/login';
     });
   }
 
-  closeRegisterModal() {
+  closeModal() {
     this.showRegisterModal = false;
+    this.showLoginModal = false;
     this.router.navigate(['/']);
   }
-
 }

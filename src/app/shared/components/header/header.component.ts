@@ -8,10 +8,10 @@ import {
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
-import { ModalRegisterDialogComponent } from '../dialogs/modal-register-dialog/modal-register-dialog.component';
 import { RouterModule } from '@angular/router';
 import { ThemeService } from '@core/services/theme.service';
 import { AuthService } from '@core/services/auth.service';
+import { MenuModule } from 'primeng/menu';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +19,8 @@ import { AuthService } from '@core/services/auth.service';
     CommonModule,
     ButtonModule,
     DialogModule,
-    RouterModule
+    RouterModule,
+    MenuModule
   ],
   standalone: true,
   templateUrl: './header.component.html',
@@ -32,6 +33,12 @@ export class HeaderComponent implements AfterViewInit {
   @ViewChild('logotype') logotype!: ElementRef;
 
   isAuthenticated: boolean = false;
+  
+  items = [
+    { label: 'Editar perfil', icon: 'pi pi-pencil', command: () => this.editar() },
+    { separator: true },
+    { label: 'Sair', icon: 'pi pi-sign-out', command: () => this.logout() }
+  ];
 
   constructor(
     private renderer: Renderer2,
@@ -68,5 +75,17 @@ export class HeaderComponent implements AfterViewInit {
 
   toggleTheme() {
     this.themeService.toggleTheme();
+  }
+
+  editar() {
+    console.log('Editar');
+  }
+
+  excluir() {
+    console.log('Excluir');
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

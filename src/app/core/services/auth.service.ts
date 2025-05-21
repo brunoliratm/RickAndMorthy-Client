@@ -23,7 +23,11 @@ export class AuthService {
     return this.httpClient.post(`${this.authUrl}/register`, body, { observe: 'response' });
   }
 
-  login(token: string): void {
+  login(body: {email: string, password: string}): Observable<any> {
+    return this.httpClient.post(`${this.authUrl}/login`, body, { observe: 'response' });
+  }
+
+  saveToken(token: string): void {
     localStorage.setItem(this.tokenKey, token);
     this.authSubject.next(true);
   }

@@ -1,0 +1,33 @@
+<section class="login-modal">
+    <div class="login-modal__card">
+        <h1 class="login-modal__title">Entre na sua conta</h1>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="login-modal__form">
+            <input id="email" formControlName="email" placeholder="E-mail" />
+
+            <input type="password" id="password" formControlName="password" placeholder="Password" />
+
+            <small *ngIf="form.invalid && form.touched" class="login-modal__error-box">
+                <ul>
+                    <li *ngIf="form.get('email')?.errors?.['required']">E-mail é obrigatório.</li>
+                    <li *ngIf="form.get('email')?.errors?.['email']">E-mail inválido.</li>
+                    <li *ngIf="form.get('password')?.errors?.['required']">Senha é obrigatória.</li>
+                </ul>
+            </small>
+
+            <button pButton type="submit" style="width: 100%; cursor: pointer;" label="Entrar" icon="pi pi-sign-in"
+                class="p-button-danger p-button-rounded p-mt-3" [disabled]="form.invalid">
+            </button>
+
+            <div class="login-modal__switch">
+                <span>Ainda não tem uma conta?
+                    <a [routerLink]="['/register']" routerLinkActive="router-link-active">registre-se aqui</a>
+                </span>
+            </div>
+        </form>
+    </div>
+
+    <div class="login-modal__image">
+        <img [src]="`assets/register-bg-${theme}.svg`" />
+    </div>
+</section>

@@ -1,17 +1,19 @@
 <section class="header">
-  <a [routerLink]="['/']" class="header__logo">
-    <div class="header__logotype"><img #logotype src="assets/icon-dark.svg" alt="logotype"></div>
-  </a>
+    <a [routerLink]="['/']" class="header__logo">
+        <div class="header__logotype"><img #logotype src="assets/icon-dark.svg" alt="logotype"></div>
+    </a>
     <div class="header__actions">
         <button #themeBtn class="header__actions__theme" (click)="toggleTheme()">
             <i #themeIcon class="pi pi-moon"></i>
             <span #themeText>Dark Mode</span>
         </button>
-        <button *ngIf="!isAuthenticated" class="header__actions__user" [routerLink]="['/register']">
+        <button pButton type="button" *ngIf="!isAuthenticated" class="header__actions__user" [routerLink]="['/register']">
             <i class="pi pi-user"></i>
             <span>Sign in / Login</span>
         </button>
-        <button *ngIf="isAuthenticated" class="header__actions__user">
+        <p-menu #menu [popup]="true" [model]="items"></p-menu>
+
+        <button pButton type="button" *ngIf="isAuthenticated" (click)="menu.toggle($event)" class="header__actions__user">
             <i class="pi pi-user"></i>
             <!--<span>{{ user.name }}</span>-->
         </button>

@@ -13,7 +13,7 @@ import { MessageService } from 'primeng/api';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-modal-register-dialog',
+  selector: 'app-modal-login-dialog',
   standalone: true,
   imports: [
     CommonModule,
@@ -27,10 +27,10 @@ import { RouterModule } from '@angular/router';
     FloatLabelModule,
     RouterModule
   ],
-  templateUrl: './modal-register-dialog.component.html',
-  styleUrls: ['./modal-register-dialog.component.scss']
+  templateUrl: './modal-login-dialog.component.html',
+  styleUrls: ['./modal-login-dialog.component.scss']
 })
-export class ModalRegisterDialogComponent implements OnInit {
+export class ModalLoginDialogComponent implements OnInit {
   form!: FormGroup;
   theme: 'light' | 'dark' = 'dark'
 
@@ -43,8 +43,6 @@ export class ModalRegisterDialogComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      name: ['', Validators.required],
-      surname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
@@ -61,7 +59,7 @@ export class ModalRegisterDialogComponent implements OnInit {
       });
     }
 
-    this.authService.register(this.form.value).subscribe({
+    this.authService.login(this.form.value).subscribe({
       next: (res) => {
         this.messageService.add({
           severity: 'success',
