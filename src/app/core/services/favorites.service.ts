@@ -1,11 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@core/config/environment';
 import { ItemType } from '@core/enums/item-type';
 import { Favorite } from '@core/models/favorite.model';
 import { Pageable } from '@core/models/pageable.model';
 import { Observable } from 'rxjs';
-import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,18 +12,14 @@ import { AuthService } from './auth.service';
 export class FavoritesService {
   private readonly API_URL = `${environment.apiBaseUrl}/favorites`;
 
-  constructor(private httpClient: HttpClient,
-    private authService: AuthService,
-  ) {}
+  constructor(private httpClient: HttpClient) {}
 
   getFavorites(itemType: ItemType): Observable<Pageable<Favorite[]>> {
     const params = {
       itemType: itemType,
     };
 
-    return this.httpClient.get<Pageable<Favorite[]>>(this.API_URL, { params, headers: new HttpHeaders({
-        Authorization: `Bearer ${this.authService.getToken()}`,
-      }) });
+    return this.httpClient.get<Pageable<Favorite[]>>(this.API_URL, { params });
   }
 
   toggleFavorite(
@@ -45,9 +40,7 @@ export class FavoritesService {
       itemType: itemType,
     };
 
-    return this.httpClient.post<Favorite>(this.API_URL, body, {headers: new HttpHeaders({
-        Authorization: `Bearer ${this.authService.getToken()}`,
-      })});
+    return this.httpClient.post<Favorite>(this.API_URL, body);
   }
 
   private removeFromFavorites(
@@ -58,8 +51,6 @@ export class FavoritesService {
       itemType: itemType,
     };
 
-    return this.httpClient.delete<Favorite>(`${this.API_URL}/${id}`, { params , headers: new HttpHeaders({
-        Authorization: `Bearer ${this.authService.getToken()}`,
-      })});
+    return this.httpClient.delete<Favorite>(`${this.API_URL}/${id}`, { params });
   }
 }

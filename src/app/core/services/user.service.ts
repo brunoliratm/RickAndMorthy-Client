@@ -17,28 +17,17 @@ export class UserService {
   ) {}
 
   userProfile(): Observable<User> {
-    return this.httpClient.get<User>(`${this.userUrl}/me`, {
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${this.authService.getToken()}`,
-      }),
-    });
+    return this.httpClient.get<User>(`${this.userUrl}/me`);
   }
 
   deleteUser(): Observable<any> {
     return this.httpClient.delete(`${this.userUrl}`, {
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${this.authService.getToken()}`,
-      }),
       observe: 'response',
     });
   }
 
   updateUserProfile(user: User): Observable<User> {
     return this.httpClient.put<User>(`${this.userUrl}`, user, {
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${this.authService.getToken()}`,
-        'Content-Type': 'application/json',
-      }),
       params: {
         id:1,
       },
@@ -56,11 +45,6 @@ export class UserService {
       confirmNewPassword
     };
 
-    return this.httpClient.post(`${this.userUrl}/forgot-password`, body, {
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${this.authService.getToken()}`,
-        'Content-Type': 'application/json'
-      })
-    });
+    return this.httpClient.post(`${this.userUrl}/forgot-password`, body);
   }
 }
