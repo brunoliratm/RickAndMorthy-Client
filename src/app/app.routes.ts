@@ -3,6 +3,7 @@ import { CharacterPageComponent } from '@features/characters/pages/character-pag
 import { LocationPageComponent } from '@features/locations/pages/location-page/location-page.component';
 import { EpisodePageComponent } from '@features/episodes/pages/episode-page/episode-page.component';
 import { MainComponent } from '@features/home/pages/main/main.component';
+import { UserComponent } from '@features/profile/pages/user/user.component';
 
 export const routes: Routes = [
   {
@@ -28,5 +29,11 @@ export const routes: Routes = [
   {
     path: 'login',
     component: MainComponent,
-  }
+  },
+  {
+    path: 'profile',
+    children: [
+      { path: '', component: UserComponent, pathMatch: 'full' },
+    ],
+  },
 ];
