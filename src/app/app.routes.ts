@@ -4,6 +4,7 @@ import { LocationPageComponent } from '@features/locations/pages/location-page/l
 import { EpisodePageComponent } from '@features/episodes/pages/episode-page/episode-page.component';
 import { MainComponent } from '@features/home/pages/main/main.component';
 import { UserComponent } from '@features/profile/pages/user/user.component';
+import { authGuard } from '@core/guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -32,6 +33,7 @@ export const routes: Routes = [
   },
   {
     path: 'profile',
+    canActivate: [authGuard],
     children: [
       { path: '', component: UserComponent, pathMatch: 'full' },
     ],
