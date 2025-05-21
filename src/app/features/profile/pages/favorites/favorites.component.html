@@ -1,20 +1,24 @@
 <app-hero></app-hero>
 
 <p-menubar>
-  <section class="filters" [formGroup]="filterForm">
-    <p-selectbutton
-      [options]="stateOptions"
-      formControlName="itemType"
-      optionLabel="label"
-      optionValue="value"
-      aria-label="itemType"
-    />
-  </section>
+  <ng-template #start>
+    <h2 class="favorites__title">Meus favoritos</h2>
+  </ng-template>
+  <ng-template #end>
+    <section class="filters" [formGroup]="filterForm">
+      <p-selectbutton
+        [options]="stateOptions"
+        formControlName="itemType"
+        optionLabel="label"
+        optionValue="value"
+        aria-label="itemType"
+      />
+    </section>
+  </ng-template>
 </p-menubar>
 
 <section class="favorites">
   <div class="favorites__container">
-    <h2 class="favorites__title">Meus favoritos</h2>
     <div class="favorites__list">
       <ng-container *ngIf="!isLoading">
         <ng-container *ngIf="!favorites.length; else favoritesList">

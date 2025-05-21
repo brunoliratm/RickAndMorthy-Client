@@ -8,7 +8,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { ThemeService } from '@core/services/theme.service';
 import { AuthService } from '@core/services/auth.service';
 import { MenuModule } from 'primeng/menu';
@@ -20,7 +20,8 @@ import { MenuModule } from 'primeng/menu';
     ButtonModule,
     DialogModule,
     RouterModule,
-    MenuModule
+    MenuModule,
+    RouterModule,
   ],
   standalone: true,
   templateUrl: './header.component.html',
@@ -33,7 +34,7 @@ export class HeaderComponent implements AfterViewInit {
   @ViewChild('logotype') logotype!: ElementRef;
 
   isAuthenticated: boolean = false;
-  
+
   items = [
     { label: 'Editar perfil', icon: 'pi pi-pencil', command: () => this.editar() },
     { label: 'Favoritos', icon: 'pi pi-heart', command: () => this.redirectsToFavoritesPage() },
@@ -80,7 +81,7 @@ export class HeaderComponent implements AfterViewInit {
   }
 
   editar() {
-    console.log('Editar');
+    this.router.navigate(['/profile']);
   }
 
   excluir() {
