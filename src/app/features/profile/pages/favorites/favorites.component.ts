@@ -1,12 +1,17 @@
-import { Component } from '@angular/core';
-import { HeroComponent } from "@shared/components/hero/hero.component";
+import { Component, inject } from '@angular/core';
+import { HeroComponent } from '@shared/components/hero/hero.component';
 import { CardCharacterComponent } from '@shared/components/cards/card-character/card-character.component';
 import { ItemType } from '@core/enums/item-type';
 import { FavoritesService } from '@core/services/favorites.service';
 import { Favorite } from '@core/models/favorite.model';
 import { NgFor, NgIf } from '@angular/common';
-import { CardEpisodeComponent } from "../../../../shared/components/cards/card-episode/card-episode.component";
+import { CardEpisodeComponent } from '../../../../shared/components/cards/card-episode/card-episode.component';
 import { CardLocationComponent } from '@shared/components/cards/card-location/card-location.component';
+import { ButtonModule } from 'primeng/button';
+import { MenubarModule } from 'primeng/menubar';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { debounceTime, distinctUntilChanged, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-favorites',
@@ -17,53 +22,91 @@ import { CardLocationComponent } from '@shared/components/cards/card-location/ca
     HeroComponent,
     CardCharacterComponent,
     CardEpisodeComponent,
-    CardLocationComponent
+    CardLocationComponent,
+    MenubarModule,
+    ButtonModule,
+    ReactiveFormsModule,
+    SelectButtonModule,
   ],
   templateUrl: './favorites.component.html',
-  styleUrl: './favorites.component.scss'
+  styleUrl: './favorites.component.scss',
 })
 export class FavoritesComponent {
-  isLoading: boolean = true;
-  favorites: Favorite[] = []
-
+  public isLoading: boolean = true;
+  public favorites: Favorite[] = [];
   public ItemTypeEnum = ItemType;
+  public filterForm!: FormGroup;
+  public stateOptions: any[] = [
+    { label: 'Characters', value: ItemType.CHARACTER },
+    { label: 'Episodes', value: ItemType.EPISODE },
+    { label: 'Locations', value: ItemType.LOCATION },
+  ];
+  public currentPage: number = 1;
 
-  constructor(
-    private favoritesService: FavoritesService,
-  ) {}
+  private destroy$ = new Subject<void>();
+  private fb = inject(FormBuilder);
+
+  constructor(private favoritesService: FavoritesService) {}
 
   ngOnInit(): void {
-    this.fetchFavorites();
-  }
+    this.fetchFavorites(ItemType.CHARACTER);
 
-  private fetchFavorites(): void {
-    this.favoritesService.getFavorites(10).subscribe({
-      next: (response) => {
-        console.log(response);
-        this.favorites = response?.content;
-        this.isLoading = false;
-      }
+    this.filterForm = this.fb.group({
+      itemType: [this.stateOptions[0].value],
+    });
+
+    this.filterForm.valueChanges
+      .pipe(debounceTime(300), distinctUntilChanged(), takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.currentPage = 1;
+        const itemType = this.filterForm.value.itemType;
+        this.fetchFavorites(itemType);
     });
   }
 
-  getFilteredCharacters(): Extract<Favorite, { item_type: ItemType.CHARACTER }>[] {
+  private fetchFavorites(itemType: ItemType): void {
+    this.favoritesService.getFavorites(itemType).subscribe({
+      next: (response) => {
+        this.favorites = response?.content;
+        this.isLoading = false;
+      },
+    });
+  }
+
+  getFilteredCharacters(): Extract<
+    Favorite,
+    { item_type: ItemType.CHARACTER }
+  >[] {
     return this.favorites.filter(
-      (favorite): favorite is Extract<Favorite, { item_type: ItemType.CHARACTER }> =>
+      (
+        favorite
+      ): favorite is Extract<Favorite, { item_type: ItemType.CHARACTER }> =>
         favorite.item_type === ItemType.CHARACTER
     );
   }
 
   getFilteredEpisodes(): Extract<Favorite, { item_type: ItemType.EPISODE }>[] {
     return this.favorites.filter(
-      (favorite): favorite is Extract<Favorite, { item_type: ItemType.EPISODE }> =>
+      (
+        favorite
+      ): favorite is Extract<Favorite, { item_type: ItemType.EPISODE }> =>
         favorite.item_type === ItemType.EPISODE
     );
   }
 
-  getFilteredLocations(): Extract<Favorite, { item_type: ItemType.LOCATION }>[] {
+  getFilteredLocations(): Extract<
+    Favorite,
+    { item_type: ItemType.LOCATION }
+  >[] {
     return this.favorites.filter(
-      (favorite): favorite is Extract<Favorite, { item_type: ItemType.LOCATION }> =>
+      (
+        favorite
+      ): favorite is Extract<Favorite, { item_type: ItemType.LOCATION }> =>
         favorite.item_type === ItemType.LOCATION
     );
+  }
+
+  favoriteRemoved(): void {
+    this.fetchFavorites(this.filterForm.value.itemType);
   }
 }

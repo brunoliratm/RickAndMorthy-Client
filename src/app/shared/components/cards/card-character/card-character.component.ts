@@ -1,7 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ItemType } from '@core/enums/item-type';
 import { Character } from '@core/models/character.model';
+import { FavoritesService } from '@core/services/favorites.service';
 import { CharacterDetailDialogComponent } from '@shared/components/dialogs/character-detail-dialog/character-detail-dialog.component';
+import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 
@@ -19,7 +22,15 @@ import { DialogModule } from 'primeng/dialog';
 })
 export class CardCharacterComponent {
   @Input() character!: Character;
+  @Input() isFavorite = false;
+  @Output() onRemove = new EventEmitter<number>();
+
   showDialog = false;
+
+  constructor(
+    private favoritesService: FavoritesService,
+    private messageService: MessageService
+  ) {}
 
   openDialog(): void {
     this.showDialog = true;
@@ -27,5 +38,27 @@ export class CardCharacterComponent {
 
   closeDialog(): void {
     this.showDialog = false;
+  }
+
+  toggleFavorite(): void {
+    this.isFavorite = !this.isFavorite;
+    this.favoritesService
+      .toggleFavorite(this.character.id, this.isFavorite, ItemType.CHARACTER)
+      .subscribe((response) => {
+        if (this.isFavorite) {
+          return this.messageService.add({
+            severity: 'success',
+            summary: 'Sucesso',
+            detail: 'Item adicionado aos favoritos com sucesso',
+          });
+        }
+
+        this.onRemove.emit();
+        return this.messageService.add({
+          severity: 'warn',
+          summary: 'Erro',
+          detail: 'Não foi possível adicionar item aos favoritos',
+        });
+      });
   }
 }
