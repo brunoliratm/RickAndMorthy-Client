@@ -2,6 +2,12 @@ $mobile-breakpoint: 480px;
 $tablet-breakpoint: 768px;
 $spacing-standard: 1rem;
 
+::ng-deep .p-menubar {
+  width: 100%;
+  border: none !important;
+  background-color: transparent !important;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));

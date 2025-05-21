@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Episode } from '@core/models/episode.model';
-import { EpisodeDetailDialogComponent } from '@shared/components/dialogs/episode-detaild-dialog/episode-detail-dialog.component';
-import { DialogModule } from 'primeng/dialog';
-import { FavoritesService } from '@core/services/favorites.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ItemType } from '@core/enums/item-type';
+import { Episode } from '@core/models/episode.model';
+import { FavoritesService } from '@core/services/favorites.service';
+import { EpisodeDetailDialogComponent } from '@shared/components/dialogs/episode-detaild-dialog/episode-detail-dialog.component';
 import { MessageService } from 'primeng/api';
+import { DialogModule } from 'primeng/dialog';
 
 @Component({
   selector: 'app-card-episode',
@@ -36,24 +36,23 @@ export class CardEpisodeComponent {
 
   toggleFavorite(): void {
     this.isFavorite = !this.isFavorite;
-    this.favoritesService.toggleFavorite(
-      this.episode.id,
-      this.isFavorite,
-      ItemType.EPISODE
-    );
-    if (this.isFavorite) {
-      return this.messageService.add({
-        severity: 'success',
-        summary: 'Sucesso',
-        detail: 'Item adicionado aos favoritos com sucesso',
-      });
-    }
+    this.favoritesService
+      .toggleFavorite(this.episode.id, this.isFavorite, ItemType.EPISODE)
+      .subscribe((response) => {
+        if (this.isFavorite) {
+          return this.messageService.add({
+            severity: 'success',
+            summary: 'Sucesso',
+            detail: 'Item adicionado aos favoritos com sucesso',
+          });
+        }
 
-    this.onRemove.emit();
-    return this.messageService.add({
-      severity: 'warn',
-      summary: 'Erro',
-      detail: 'Não foi possível adicionar item aos favoritos',
-    });
+        this.onRemove.emit();
+        return this.messageService.add({
+          severity: 'warn',
+          summary: 'Erro',
+          detail: 'Não foi possível adicionar item aos favoritos',
+        });
+      });
   }
 }
