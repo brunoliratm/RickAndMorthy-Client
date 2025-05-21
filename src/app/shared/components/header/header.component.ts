@@ -8,8 +8,10 @@ import {
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
-import { ModalRegisterDialogComponent } from '../dialogs/modal-register-dialog/modal-register-dialog.component';
 import { RouterModule } from '@angular/router';
+import { ThemeService } from '@core/services/theme.service';
+import { AuthService } from '@core/services/auth.service';
+import { MenuModule } from 'primeng/menu';
 
 @Component({
   selector: 'app-header',
@@ -17,8 +19,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     ButtonModule,
     DialogModule,
-    ModalRegisterDialogComponent,
     RouterModule,
+    MenuModule
   ],
   standalone: true,
   templateUrl: './header.component.html',
@@ -29,9 +31,26 @@ export class HeaderComponent implements AfterViewInit {
   @ViewChild('themeIcon') themeIcon!: ElementRef;
   @ViewChild('themeText') themeText!: ElementRef;
   @ViewChild('logotype') logotype!: ElementRef;
-  displayModal: boolean = false;
 
-  constructor(private renderer: Renderer2) {}
+  isAuthenticated: boolean = false;
+  
+  items = [
+    { label: 'Editar perfil', icon: 'pi pi-pencil', command: () => this.editar() },
+    { separator: true },
+    { label: 'Sair', icon: 'pi pi-sign-out', command: () => this.logout() }
+  ];
+
+  constructor(
+    private renderer: Renderer2,
+    private themeService: ThemeService,
+    private authService: AuthService
+  ) { }
+
+  ngOnInit(): void {
+    this.authService.authStatus$.subscribe((isLoggedIn) => {
+      this.isAuthenticated = isLoggedIn;
+    });
+  }
 
   ngAfterViewInit(): void {
     const current =
@@ -55,33 +74,18 @@ export class HeaderComponent implements AfterViewInit {
   }
 
   toggleTheme() {
-    const root = document.documentElement;
-    const current = root.getAttribute('data-theme') ?? 'dark';
-    const next = current === 'light' ? 'dark' : 'light';
-    root.setAttribute('data-theme', next);
-
-    if (this.themeIcon && this.themeText) {
-      const iconClass = next === 'light' ? 'pi pi-moon' : 'pi pi-sun';
-      const text = next === 'light' ? 'Dark Mode' : 'Light Mode';
-
-      this.renderer.setAttribute(
-        this.themeIcon.nativeElement,
-        'class',
-        iconClass
-      );
-      this.renderer.setProperty(
-        this.themeText.nativeElement,
-        'textContent',
-        text
-      );
-    }
-
-    if (this.logotype) {
-      this.logotype.nativeElement.src = `assets/icon-${next}.svg`;
-    }
+    this.themeService.toggleTheme();
   }
 
-  showModal() {
-    this.displayModal = true;
+  editar() {
+    console.log('Editar');
+  }
+
+  excluir() {
+    console.log('Excluir');
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

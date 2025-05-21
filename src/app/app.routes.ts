@@ -21,4 +21,12 @@ export const routes: Routes = [
     path: 'episodes',
     component: EpisodePageComponent,
   },
+  {
+    path: 'register',
+    component: MainComponent,
+  },
+  {
+    path: 'login',
+    component: MainComponent,
+  }
 ];
