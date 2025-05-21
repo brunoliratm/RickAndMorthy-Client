@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { environment } from '@core/config/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -7,9 +10,18 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class AuthService {
   private tokenKey = 'user_token';
   private authSubject = new BehaviorSubject<boolean>(this.hasToken());
+  private authUrl = environment.apiBaseUrl + '/auth'
+
   authStatus$: Observable<boolean> = this.authSubject.asObservable();
 
-  constructor() {}
+  constructor(
+    private httpClient: HttpClient,
+    private router: Router
+  ) {}
+
+  register(body: {name: string, surname: string, email: string, password: string}): Observable<any> {
+    return this.httpClient.post(`${this.authUrl}/register`, body, { observe: 'response' });
+  }
 
   login(token: string): void {
     localStorage.setItem(this.tokenKey, token);

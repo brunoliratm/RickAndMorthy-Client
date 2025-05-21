@@ -11,6 +11,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ModalRegisterDialogComponent } from '../dialogs/modal-register-dialog/modal-register-dialog.component';
 import { RouterModule } from '@angular/router';
 import { ThemeService } from '@core/services/theme.service';
+import { AuthService } from '@core/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -18,8 +19,7 @@ import { ThemeService } from '@core/services/theme.service';
     CommonModule,
     ButtonModule,
     DialogModule,
-    ModalRegisterDialogComponent,
-    RouterModule,
+    RouterModule
   ],
   standalone: true,
   templateUrl: './header.component.html',
@@ -30,12 +30,20 @@ export class HeaderComponent implements AfterViewInit {
   @ViewChild('themeIcon') themeIcon!: ElementRef;
   @ViewChild('themeText') themeText!: ElementRef;
   @ViewChild('logotype') logotype!: ElementRef;
-  displayModal: boolean = false;
+
+  isAuthenticated: boolean = false;
 
   constructor(
     private renderer: Renderer2,
-    private themeService: ThemeService
-  ) {}
+    private themeService: ThemeService,
+    private authService: AuthService
+  ) { }
+
+  ngOnInit(): void {
+    this.authService.authStatus$.subscribe((isLoggedIn) => {
+      this.isAuthenticated = isLoggedIn;
+    });
+  }
 
   ngAfterViewInit(): void {
     const current =
@@ -60,9 +68,5 @@ export class HeaderComponent implements AfterViewInit {
 
   toggleTheme() {
     this.themeService.toggleTheme();
-  }
-
-  showModal() {
-    this.displayModal = true;
   }
 }

@@ -7,29 +7,13 @@
             <i #themeIcon class="pi pi-moon"></i>
             <span #themeText>Dark Mode</span>
         </button>
-        <button class="header__actions__user" (click)="showModal()">
+        <button *ngIf="!isAuthenticated" class="header__actions__user" [routerLink]="['/register']">
             <i class="pi pi-user"></i>
             <span>Sign in / Login</span>
         </button>
+        <button *ngIf="isAuthenticated" class="header__actions__user">
+            <i class="pi pi-user"></i>
+            <!--<span>{{ user.name }}</span>-->
+        </button>
     </div>
 </section>
-
-<p-dialog 
-    [(visible)]="displayModal" 
-    [modal]="true" 
-    [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" 
-    [style]="{ width: '50vw', backgroundColor: 'var(--bg-color)', color: 'var(--text-color)'}" 
-    [draggable]="false" 
-    [resizable]="false"
-    [showHeader]="false"
-    [contentStyle]="{'position': 'relative'}"
->
-    <button 
-        pButton 
-        icon="pi pi-times" 
-        (click)="displayModal = false"
-        class="close-button"
-        type="button"
-    ></button>
-    <app-modal-register-dialog></app-modal-register-dialog>
-</p-dialog>
