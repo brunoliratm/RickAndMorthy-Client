@@ -5,6 +5,8 @@ import { EpisodePageComponent } from '@features/episodes/pages/episode-page/epis
 import { MainComponent } from '@features/home/pages/main/main.component';
 import { UserComponent } from '@features/profile/pages/user/user.component';
 import { authGuard } from '@core/guards/auth.guard';
+import { FavoritesComponent } from '@features/profile/pages/favorites/favorites.component';
+
 
 export const routes: Routes = [
   {
@@ -36,6 +38,8 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: '', component: UserComponent, pathMatch: 'full' },
-    ],
-  },
+
+      { path: 'favorites', component: FavoritesComponent, pathMatch: 'full' },
+    ]
+  }
 ];

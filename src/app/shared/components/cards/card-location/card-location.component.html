@@ -17,8 +17,15 @@
       <i class="pi pi-info-circle know" aria-hidden="true"></i>
       <span class="text-wrapper">Learn more</span>
     </button>
-    <button class="heart" type="button">
-      <i class="pi pi-heart" aria-hidden="true"></i>
+    <button class="heart" type="button" (click)="toggleFavorite()">
+      <i
+        class="pi"
+        [ngClass]="{
+          'pi-heart-fill': isFavorite,
+          'pi-heart': !isFavorite
+        }"
+        aria-hidden="true"
+      ></i>
     </button>
   </div>
 </article>

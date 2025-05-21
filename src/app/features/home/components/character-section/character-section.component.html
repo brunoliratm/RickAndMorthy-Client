@@ -12,11 +12,11 @@
         [value]="characters" 
         [numVisible]="5" 
         [numScroll]="1"   
-        [circular]="true" 
+        [circular]="false" 
         [responsiveOptions]="responsiveOptions"
       >
         <ng-template pTemplate="item" let-character>
-          <app-card-character [character]="character"></app-card-character>
+          <app-card-character [character]="character" [isFavorite]="character.isFavorite"></app-card-character>
         </ng-template>
       </p-carousel>
     </div>

@@ -37,6 +37,7 @@ export class HeaderComponent implements AfterViewInit {
 
   items = [
     { label: 'Editar perfil', icon: 'pi pi-pencil', command: () => this.editar() },
+    { label: 'Favoritos', icon: 'pi pi-heart', command: () => this.redirectsToFavoritesPage() },
     { separator: true },
     { label: 'Sair', icon: 'pi pi-sign-out', command: () => this.logout() }
   ];
@@ -89,5 +90,9 @@ export class HeaderComponent implements AfterViewInit {
 
   logout() {
     this.authService.logout();
+  }
+
+  redirectsToFavoritesPage() {
+    this.router.navigate(['/profile/favorites']);
   }
 }
