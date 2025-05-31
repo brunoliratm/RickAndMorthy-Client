@@ -1,0 +1,47 @@
+<article class="card-location">
+  <div class="planet-container">
+    <div class="earth-icon" aria-hidden="true">
+      <i class="material-icons" style="font-size: 3rem">public</i>
+    </div>
+    <span class="planet-label">Planet</span>
+  </div>
+
+  <div class="title-container">
+    <h2 class="title-container-title">{{ location.name }}</h2>
+    <p class="title-container-dimension">{{ location.dimension }}</p>
+    <p class="title-container-type">{{ location.type }}</p>
+  </div>
+
+  <div class="button-container">
+    <button class="knew-more-btn" type="button" (click)="openDialog()">
+      <i class="pi pi-info-circle know" aria-hidden="true"></i>
+      <span class="text-wrapper">Learn more</span>
+    </button>
+  </div>
+</article>
+
+<p-dialog
+  [(visible)]="showDialog"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [style]="{ width: '95%', maxWidth: '40rem', borderRadius: '1rem' }"
+  [contentStyle]="{ overflow: 'hidden', padding: '0' }"
+  [showHeader]="false"
+  appendTo="body"
+  [baseZIndex]="10000"
+  styleClass="location-dialog"
+  [dismissableMask]="true"
+  [breakpoints]="{ '960px': '95vw', '640px': '100vw' }"
+  [position]="'center'"
+  [maskStyle]="{
+    'background-color': 'rgba(0,0,0,0.7)',
+    'backdrop-filter': 'blur(2px)'
+  }"
+>
+  <app-location-detail-dialog
+    *ngIf="selectedLocation"
+    [location]="selectedLocation"
+    (closeEvent)="closeDialog()"
+  ></app-location-detail-dialog>
+</p-dialog>

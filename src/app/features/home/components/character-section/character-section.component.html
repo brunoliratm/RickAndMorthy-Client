@@ -1,0 +1,24 @@
+<section class="character-section">
+  <div class="section-header">
+    <h2>Characters</h2>
+    <button class="btn" [routerLink]="['/characters']">
+      <i class="pi pi-objects-column"></i> See all
+    </button>
+  </div>
+
+  <div class="grid-container">
+    <div class="grid">
+        <p-carousel 
+        [value]="characters" 
+        [numVisible]="5" 
+        [numScroll]="1"   
+        [circular]="false" 
+        [responsiveOptions]="responsiveOptions"
+      >
+        <ng-template pTemplate="item" let-character>
+          <app-card-character [character]="character" [isFavorite]="character.isFavorite"></app-card-character>
+        </ng-template>
+      </p-carousel>
+    </div>
+  </div>
+</section>

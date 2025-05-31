@@ -1,0 +1,22 @@
+<div class="dialog-content">
+  <button class="close-btn" (click)="close()" aria-label="Close dialog">
+    <i class="pi pi-times-circle"></i>
+  </button>
+  <div class="main-content">
+    <div class="icon-container">
+      <i class="pi pi-globe location-icon"></i>
+    </div>
+    <div class="location-info">
+      <h2 class="location">{{ location.name }}</h2>
+      <p class="info-item">
+        <i class="pi pi-compass"></i>
+        <span class="text">Dimension: {{ location.dimension }}</span>
+      </p>
+
+      <p class="info-item">
+        <i class="pi pi-clone"></i>
+        <span class="text">Type: {{ location.type }}</span>
+      </p>
+    </div>
+  </div>
+</div>

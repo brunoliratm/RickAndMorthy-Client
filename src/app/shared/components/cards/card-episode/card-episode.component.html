@@ -1,0 +1,43 @@
+<div class="card-episode">
+  <div class="header-container">
+    <div class="tv-icon">
+      <i class="pi pi-desktop"></i>
+      <i class="pi pi-play"></i>
+    </div>
+    <div class="title-container">
+      <p class="title-container-title">{{ episode.name }}</p>
+      <p class="title-container-code">{{ episode.episode }}</p>
+    </div>
+  </div>
+  <div class="button-container">
+    <button class="knew-more-btn" type="button" (click)="openDialog()">
+      <i class="pi pi-info-circle know"></i>
+      <span class="text-wrapper">Learn More</span>
+    </button>
+  </div>
+</div>
+
+<p-dialog
+  [(visible)]="showDialog"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [style]="{ width: '95%', maxWidth: '40rem', borderRadius: '1rem' }"
+  [contentStyle]="{ overflow: 'hidden', padding: '0' }"
+  [showHeader]="false"
+  appendTo="body"
+  [baseZIndex]="10000"
+  styleClass="character-dialog"
+  [dismissableMask]="true"
+  [breakpoints]="{ '960px': '95vw', '640px': '100vw' }"
+  [position]="'center'"
+  [maskStyle]="{
+    'background-color': 'rgba(0,0,0,0.7)',
+    'backdrop-filter': 'blur(2px)'
+  }"
+>
+  <app-episode-detail-dialog
+    [episode]="episode"
+    (closeEvent)="closeDialog()"
+  ></app-episode-detail-dialog>
+</p-dialog>

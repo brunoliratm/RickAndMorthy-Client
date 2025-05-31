@@ -1,0 +1,123 @@
+$mobile-breakpoint: 480px;
+$tablet-breakpoint: 768px;
+$spacing-standard: 1rem;
+
+:host ::ng-deep {
+  .p-carousel-viewport {
+    padding: 0.4rem 0;
+  }
+}
+
+.locations-section {
+  .section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-left: 2.5em;
+
+    h2 {
+      font-size: 1.6rem;
+      color: var(--text-color);
+      margin-right: 1rem;
+      margin-bottom: 0;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      height: 2.2rem;
+    }
+
+    .btn {
+      background-color: var(--primary-color);
+      color: var(--text-color);
+      text-decoration: none;
+      border-radius: 25px;
+      padding: 0.6rem 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      align-self: center;
+      font-size: 0.9rem;
+      line-height: 1;
+      height: 1.9rem;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      box-shadow: none;
+
+      i {
+        margin-right: 0.5rem;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .grid-container {
+    width: 100%;
+    position: relative;
+    padding: 0 0.5rem;
+  }
+
+  .grid {
+    width: 100%;
+  }
+}
+
+:host ::ng-deep {
+  .p-carousel {
+    .p-carousel-content {
+      padding: 0 1rem;
+    }
+
+    .p-carousel-container {
+      padding: 0 2rem;
+    }
+
+    .p-carousel-items-content {
+      justify-content: center !important;
+    }
+
+    .p-carousel-indicators {
+      margin-top: 1rem;
+    }
+
+    .p-carousel-item {
+      padding: 0 0.5rem;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+    }
+
+    .p-carousel-prev,
+    .p-carousel-next {
+      background-color: var(--primary-color);
+      color: var(--text-color);
+      border-radius: 50%;
+      margin: 0 0.5rem;
+
+      &:hover {
+        background-color: var(--secundary-color);
+      }
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+
+  app-card-location {
+    display: block;
+    width: 220px;
+
+    @media (max-width: $tablet-breakpoint) {
+      width: 200px;
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+      width: 180px;
+    }
+
+    @media (max-width: 360px) {
+      width: 160px;
+    }
+  }
+}
