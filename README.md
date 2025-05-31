@@ -4,275 +4,247 @@
 
 <div align="center">
 
-[![Angular](https://img.shields.io/badge/Angular-19.0.0-DD0031?logo=angular)](https://angular.io/)
+[![Angular](https://img.shields.io/badge/Angular-19.2.0-DD0031?logo=angular)](https://angular.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![RxJS](https://img.shields.io/badge/RxJS-7.8.0-B7178C?logo=reactivex)](https://rxjs.dev/)
+[![PrimeNG](https://img.shields.io/badge/PrimeNG-19.1.2-007ACC?logo=primeng)](https://primeng.org/)
 
 </div>
 
-> _A modern Angular application to explore the multiverse of Rick and Morty!_
+> _A modern Angular application to explore the infinite multiverse of Rick and Morty!_
 
-This repository contains a web interface for the Rick and Morty application, built with Angular. It consumes the [Rick and Morty API](https://github.com/Exploit-Experts/RickAndMorty-Spring-API) to allow users to browse, filter, and view information about the series' characters, locations, and episodes.
+A comprehensive web interface built with Angular that provides an intuitive way to browse and explore the Rick and Morty universe. The application consumes the [Rick and Morty API](https://rickandmortyapi.com) to deliver rich information about characters, locations, episodes, and more.
 
-**[English](#english-documentation) | [Português](#documentação-em-português)**
+## 🚀 Demo
 
----
+[Live Web](https://your-demo-link.com) | [Screenshots](#screenshots)
 
-## English Documentation
+## 📋 Table of Contents
 
-### 📋 Table of Contents
+- [Features](#-features)
+- [Demo](#-demo)
+- [Tech Stack](#-tech-stack)
+- [Getting Started](#-getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Development Server](#development-server)
+  - [Build](#build)
+- [Project Structure](#-project-structure)
+- [API Integration](#-api-integration)
+- [Environment Configuration](#-environment-configuration)
+- [Screenshots](#-screenshots)
+- [Features Roadmap](#-features-roadmap)
+- [Contributing](#-contributing)
+- [Support](#-support)
+- [License](#-license)
+- [Acknowledgments](#-acknowledgments)
 
-- [Overview](#overview)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-- [API Integration](#api-integration)
-- [Contributing](#contributing)
-- [License](#license)
+## 📖 Overview
 
-### Overview
+Rick and Morty Explorer is a comprehensive front-end application that provides an intuitive interface for exploring all aspects of the Rick and Morty universe. Users can browse characters, locations, and episodes with rich filtering capabilities and an immersive user experience.
 
-Rick and Morty Explorer is a comprehensive front-end application that provides an intuitive interface for exploring all aspects of the Rick and Morty universe. Users can browse characters, locations, and episodes with rich filtering capabilities and create accounts to save their favorite content.
-
-### Features
+## ✨ Features
 
 - **Character Explorer**
 
   - Browse all characters with pagination
   - Filter by status (alive, dead, unknown)
   - Filter by species, gender, and origin
-  - Detailed character profiles with related episodes
+  - Detailed character profiles
 
 - **Location Directory**
 
   - Browse all locations from the multiverse
   - Filter by type and dimension
-  - View residents of each location
 
 - **Episode Guide**
 
   - Complete episode listing with air dates
   - Season categorization
-  - Character appearances by episode
 
-- **User Features** _(In Development)_
-
-  - User registration and authentication
-  - Save favorite characters, locations, and episodes
-  - Personalized dashboard
-
-- **UI/UX**
+- **User Experience**
   - Responsive design for mobile and desktop
-  - Intuitive navigation
+  - Dark/Light theme toggle
+  - Intuitive navigation with hero section
   - Dynamic search capabilities
   - Consistent theming inspired by the show
+  - Loading states and error handling
 
-### Tech Stack
+## 🛠 Tech Stack
 
-- **Frontend Framework:** Angular 19
+- **Frontend Framework:** Angular 19.2.0
 - **Language:** TypeScript 5.7
+- **UI Components:** PrimeNG 19.1.2
+- **Icons:** PrimeIcons 7.0.0
 - **Styling:** SCSS with responsive design
 - **State Management:** RxJS for reactive state handling
 - **HTTP Client:** Angular HttpClient for API communication
 - **Build Tools:** Angular CLI
 - **Package Manager:** npm
 
-### Getting Started
+## 🚀 Getting Started
 
-#### Prerequisites
+### Prerequisites
 
-- Node.js (v18 or higher)
-- npm or yarn package manager
+Make sure you have the following installed on your development machine:
 
-#### Installation
+- **Node.js** (v18 or higher) - [Download](https://nodejs.org/)
+- **npm** (comes with Node.js) or **yarn** package manager
+- **Angular CLI** (optional but recommended) - `npm install -g @angular/cli`
 
-1. Clone the repository:
+### Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/brunoliratm/RickAndMorthy-Client.git
+   ```
+
+2. **Navigate to the project directory:**
+
+   ```bash
+   cd RickAndMorthy-Client
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+### Development Server
+
+Start the development server:
 
 ```bash
-git clone https://github.com/Exploit-Experts/RickAndMorthy-client.git
-```
-
-2. Navigate to the project directory:
-
-```bash
-cd RickAndMorty-client
-```
-
-3. Install dependencies:
-
-```bash
-npm install
-```
-
-4. Start the development server:
-
-```bash
+npm start
+# or
 ng serve
 ```
 
-5. Open your browser and navigate to `http://localhost:4200`
+Open your browser and navigate to `http://localhost:4200`. The application will automatically reload if you change any of the source files.
 
-#### Building for Production
+### Build
+
+Build the project for production:
 
 ```bash
 npm run build
+# or
+ng build
 ```
 
 The build artifacts will be stored in the `dist/` directory.
 
-### API Integration
+## 📁 Project Structure
 
-The application integrates with the [Rick and Morty API](https://github.com/Exploit-Experts/RickAndMorty-Spring-API) to fetch data about:
+```
+src/
+├── app/
+│   ├── core/
+│   │   ├── config/
+│   │   ├── models/
+│   │   └── services/
+│   ├── features/
+│   │   ├── characters/
+│   │   ├── episodes/
+│   │   ├── home/
+│   │   └── locations/
+│   ├── shared/
+│   │   └── components/
+│   ├── app.component.*
+│   ├── app.routes.ts
+│   └── main.ts
+```
 
-- Characters: `/characters` endpoint
-- Locations: `/locations` endpoint
-- Episodes: `/episodes` endpoint
+## 🔌 API Integration
 
-Each API service is implemented in the `core/services` directory with TypeScript interfaces for strong typing.
+The application integrates with the [Rick and Morty API](https://rickandmortyapi.com) to fetch data about:
 
-### Contributing
+- **Characters:** `/character` endpoint with filtering capabilities
+- **Locations:** `/location` endpoint with type and dimension filters
+- **Episodes:** `/episode` endpoint with season information
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+### API Services
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+Each API service is implemented in the `core/services` directory with TypeScript interfaces for strong typing:
 
-### License
+- `CharacterService` - Handles character data fetching and filtering
+- `LocationService` - Manages location data and resident information
+- `EpisodeService` - Handles episode data and character appearances
+
+### Data Models
+
+Type-safe interfaces are defined in `core/models/`:
+
+- `Character` - Character data structure
+- `Location` - Location data structure
+- `Episode` - Episode data structure
+- `ApiInfo` - API pagination information
+
+## ⚙️ Environment Configuration
+
+The application uses environment configuration for API endpoints:
+
+```typescript
+// src/app/core/config/environment.ts
+export const environment = {
+  apiBaseUrl: "https://rickandmortyapi.com/api",
+};
+```
+
+## 📱 Screenshots
+
+<!-- Add screenshots here when available -->
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+### Development Guidelines
+
+1. **Fork the repository**
+2. **Create your feature branch:**
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+3. **Commit your changes:**
+   ```bash
+   git commit -m 'Add some amazing feature'
+   ```
+4. **Push to the branch:**
+   ```bash
+   git push origin feature/amazing-feature
+   ```
+5. **Open a Pull Request**
+
+### Code Style
+
+- Follow Angular style guide conventions
+- Use TypeScript strict mode
+- Write meaningful commit messages
+- Add tests for new features
+- Update documentation as needed
+
+## 📞 Support
+
+If you have any questions or need help with the project:
+
+- **Issues:** [GitHub Issues](https://github.com/brunoliratm/RickAndMorthy-Client/issues)
+
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## 🙏 Acknowledgments
+
+- **Rick and Morty API** - [https://rickandmortyapi.com](https://rickandmortyapi.com) for providing the comprehensive API
+- **Angular Team** - For the excellent framework and development tools
+- **PrimeNG** - For the beautiful UI components
+- **Open Source Community** - For the amazing tools and libraries
+
 ---
 
-## Documentação em Português
-
-### 📋 Índice
-
-- [Visão Geral](#visão-geral)
-- [Funcionalidades](#funcionalidades)
-- [Stack Tecnológico](#stack-tecnológico)
-- [Como Começar](#como-começar)
-- [Integração com API](#integração-com-api)
-- [Contribuindo](#contribuindo)
-- [Licença](#licença)
-
-### Visão Geral
-
-Rick and Morty Explorer é uma aplicação front-end abrangente que fornece uma interface intuitiva para explorar todos os aspectos do universo de Rick and Morty. Os usuários podem navegar por personagens, localizações e episódios com ricas capacidades de filtragem e criar contas para salvar seu conteúdo favorito.
-
-### Funcionalidades
-
-- **Explorador de Personagens**
-
-  - Navegue por todos os personagens com paginação
-  - Filtre por status (vivo, morto, desconhecido)
-  - Filtre por espécie, gênero e origem
-  - Perfis detalhados dos personagens com episódios relacionados
-
-- **Diretório de Localizações**
-
-  - Navegue por todas as localizações do multiverso
-  - Filtre por tipo e dimensão
-  - Veja residentes de cada localização
-
-- **Guia de Episódios**
-
-  - Listagem completa de episódios com datas de exibição
-  - Categorização por temporada
-  - Aparições de personagens por episódio
-
-- **Recursos de Usuário** _(Em Desenvolvimento)_
-
-  - Registro e autenticação de usuários
-  - Salve personagens, localizações e episódios favoritos
-  - Painel personalizado
-
-- **UI/UX**
-  - Design responsivo para celular e desktop
-  - Navegação intuitiva
-  - Capacidades de busca dinâmica
-  - Tema consistente inspirado na série
-
-### Stack Tecnológico
-
-- **Framework Frontend:** Angular 19
-- **Linguagem:** TypeScript 5.7
-- **Estilização:** SCSS com design responsivo
-- **Gerenciamento de Estado:** RxJS para manipulação reativa de estado
-- **Cliente HTTP:** Angular HttpClient para comunicação com API
-- **Ferramentas de Build:** Angular CLI
-- **Gerenciador de Pacotes:** npm
-
-### Como Começar
-
-#### Pré-requisitos
-
-- Node.js (v18 ou superior)
-- Gerenciador de pacotes npm ou yarn
-
-#### Instalação
-
-1. Clone o repositório:
-
-```bash
-git clone https://github.com/Exploit-Experts/RickAndMorthy-client.git
-```
-
-2. Navegue até o diretório do projeto:
-
-```bash
-cd RickAndMorty-client
-```
-
-3. Instale as dependências:
-
-```bash
-npm install
-```
-
-4. Inicie o servidor de desenvolvimento:
-
-```bash
-ng serve
-```
-
-5. Abra seu navegador e acesse `http://localhost:4200`
-
-#### Build para Produção
-
-```bash
-npm run build
-```
-
-Os artefatos de build serão armazenados no diretório `dist/`.
-
-### Integração com API
-
-A aplicação integra-se com a [API do Rick and Morty](https://github.com/Exploit-Experts/RickAndMorty-Spring-API) para buscar dados sobre:
-
-- Personagens: endpoint `/characters`
-- Localizações: endpoint `/locations`
-- Episódios: endpoint `/episodes`
-
-Cada serviço de API é implementado no diretório `core/services` com interfaces TypeScript para tipagem forte.
-
-### Contribuindo
-
-Contribuições são bem-vindas! Sinta-se à vontade para enviar um Pull Request.
-
-1. Faça um fork do repositório
-2. Crie sua branch de feature (`git checkout -b feature/recurso-incrivel`)
-3. Commit suas alterações (`git commit -m 'Adicionar algum recurso incrível'`)
-4. Push para a branch (`git push origin feature/recurso-incrivel`)
-5. Abra um Pull Request
-
-### Licença
-
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
-
 <div align="center">
-    <img src="https://capsule-render.vercel.app/api?type=waving&height=200&color=gradient&reversal=false&section=footer">
+  Made with ❤️ for Rick and Morty fans everywhere
 </div>
