@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Episode } from '@core/models/episode.model';
 import { EpisodeService } from '@core/services/episode.service';
@@ -41,8 +41,8 @@ export class EpisodeListComponent implements OnInit, OnDestroy {
   totalPages = 1;
   loading = false;
   stateOptions: any[] = [
-    { label: 'ASC', value: 'NAME' },
-    { label: 'DSC', value: 'NAME_DESC' },
+    { label: 'ASC', value: 'ASC' },
+    { label: 'DSC', value: 'DESC' },
   ];
 
   filterForm!: FormGroup;
@@ -50,7 +50,7 @@ export class EpisodeListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.filterForm = this.fb.group({
       name: [''],
-      sort: ['NAME'],
+      direction: ['ASC'],
     });
 
     this.loadEpisodes();
@@ -74,7 +74,7 @@ export class EpisodeListComponent implements OnInit, OnDestroy {
 
     const params: any = { page: this.currentPage };
     if (filters.name) params.name = filters.name;
-    if (filters.sort) params.sort = filters.sort;
+    if (filters.direction) params.direction = filters.direction;
 
     this.episodeService.getEpisodes(params).subscribe({
       next: (res) => {

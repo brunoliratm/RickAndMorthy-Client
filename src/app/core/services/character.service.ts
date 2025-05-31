@@ -23,19 +23,41 @@ export class CharacterService {
     type?: string;
     gender?: string;
   }): Observable<{ info: ApiInfo; results: Character[] }> {
+    const apiParams: any = { page: params.page };
+    if (params.name) apiParams.name = params.name;
+    if (params.status) apiParams.status = params.status;
+    if (params.species) apiParams.species = params.species;
+    if (params.type) apiParams.type = params.type;
+    if (params.gender) apiParams.gender = params.gender;
+
     return this.http
-      .get<{ info: ApiInfo; results: Character[] }>(this.API_URL, { params })
+      .get<{ info: ApiInfo; results: Character[] }>(this.API_URL, {
+        params: apiParams,
+      })
       .pipe(
         map((response) => ({
           ...response,
-          results: response.results.map((character) => ({
-            ...character,
-            location: {
-              name: character.location?.name || 'Unknown',
-            },
-          })),
+          results: this.sortCharacters(
+            response.results.map((character) => ({
+              ...character,
+              location: {
+                name: character.location?.name || 'Unknown',
+              },
+            })),
+            params.direction || 'ASC'
+          ),
         }))
       );
+  }
+
+  private sortCharacters(
+    characters: Character[],
+    direction: string
+  ): Character[] {
+    return characters.sort((a, b) => {
+      const comparison = a.name.localeCompare(b.name);
+      return direction === 'DESC' ? -comparison : comparison;
+    });
   }
 
   getCharacterById(id: number): Observable<Character> {
