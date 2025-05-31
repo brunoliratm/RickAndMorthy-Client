@@ -1,49 +1,11 @@
 <app-header></app-header>
 
-<main>
-  <p-toast></p-toast>
-  <router-outlet></router-outlet>
+<main class="main">
+  <div class="main-container">
+    <app-hero></app-hero>
+
+    <router-outlet></router-outlet>
+  </div>
 </main>
 
 <app-footer></app-footer>
-
-<p-dialog 
-  [(visible)]="showRegisterModal" 
-  [modal]="true" 
-  [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" 
-  [style]="{ width: '50vw', backgroundColor: 'var(--bg-color)', color: 'var(--text-color)'}" 
-  [draggable]="false" 
-  [resizable]="false"
-  [showHeader]="false"
-  [contentStyle]="{'position': 'relative'}"
->
-  <button 
-    pButton
-    icon="pi pi-times" 
-    (click)="closeModal()"
-    class="close-button"
-    type="button"
-  ></button>
-  <app-modal-register-dialog></app-modal-register-dialog>
-</p-dialog>
-
-
-<p-dialog 
-  [(visible)]="showLoginModal" 
-  [modal]="true" 
-  [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" 
-  [style]="{ width: '50vw', backgroundColor: 'var(--bg-color)', color: 'var(--text-color)'}" 
-  [draggable]="false" 
-  [resizable]="false"
-  [showHeader]="false"
-  [contentStyle]="{'position': 'relative'}"
->
-  <button 
-    pButton
-    icon="pi pi-times" 
-    (click)="closeModal()"
-    class="close-button"
-    type="button"
-  ></button>
-  <app-modal-login-dialog></app-modal-login-dialog>
-</p-dialog>

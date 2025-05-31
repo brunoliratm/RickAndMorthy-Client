@@ -109,7 +109,7 @@ img {
 
 .button-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-top: 1em;
 }
@@ -145,13 +145,6 @@ img {
   }
 }
 
-.heart {
-  font-size: 1.5em;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
 @media only screen and (max-width: $tablet-breakpoint) {
   .info-item {
     margin-bottom: 0.15em;
@@ -185,10 +178,6 @@ img {
     .text-wrapper {
       font-size: 0.65em;
     }
-  }
-
-  .heart {
-    font-size: 1em;
   }
 }
 
@@ -235,10 +224,6 @@ img {
     .text-wrapper {
       font-size: 0.7em;
     }
-  }
-
-  .heart {
-    font-size: 1.2em;
   }
 
   .character-card {

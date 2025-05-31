@@ -9,14 +9,13 @@ import { ApiInfo } from '@core/models/api-info.model';
   providedIn: 'root',
 })
 export class EpisodeService {
-  private readonly API_URL = `${environment.apiBaseUrl}/episodes`;
+  private readonly API_URL = `${environment.apiBaseUrl}/episode`;
 
   constructor(private http: HttpClient) {}
 
   getEpisodes(params: {
     page?: number;
     name?: string;
-    sort?: string;
   }): Observable<{ info: ApiInfo; results: Episode[] }> {
     return this.http.get<{ info: ApiInfo; results: Episode[] }>(this.API_URL, {
       params,

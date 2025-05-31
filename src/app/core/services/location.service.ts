@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class LocationService {
-  private readonly API_URL = `${environment.apiBaseUrl}/locations`;
+  private readonly API_URL = `${environment.apiBaseUrl}/location`;
 
   constructor(private http: HttpClient) {}
 

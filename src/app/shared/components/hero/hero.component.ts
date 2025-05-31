@@ -4,6 +4,7 @@ import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-hero',
+  standalone: true,
   imports: [ButtonModule, RouterModule],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss',

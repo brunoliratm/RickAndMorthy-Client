@@ -6,9 +6,6 @@ import { CardLocationComponent } from '@shared/components/cards/card-location/ca
 import { forkJoin } from 'rxjs';
 import { RouterModule } from '@angular/router';
 import { CarouselModule } from 'primeng/carousel';
-import { FavoritesService } from '@core/services/favorites.service';
-import { ItemType } from '@core/enums/item-type';
-import { AuthService } from '@core/services/auth.service';
 
 @Component({
   selector: 'app-location-section',
@@ -46,26 +43,12 @@ export class LocationSectionComponent implements OnInit {
 
   constructor(
     private locationService: LocationService,
-    private favoritesService: FavoritesService,
-    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
     forkJoin([this.locationService.getLocations({ page: 1 })]).subscribe(
       ([res1]) => {
         this.locations = res1.results.slice(0, 10);
-        if (this.authService.isAuthenticated()) {
-          this.favoritesService
-            .getFavorites(ItemType.LOCATION)
-            .subscribe((favorites) => {
-              this.locations = this.locations.map((location) => {
-                const isFavorite = favorites.content.some(
-                  (favorite) => favorite.item_id === location.id
-                );
-                return { ...location, isFavorite };
-              });
-            });
-        }
       }
     );
   }

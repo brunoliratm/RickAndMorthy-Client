@@ -4,9 +4,6 @@ import { Location } from '@core/models/location.model';
 import { LocationService } from '@core/services/location.service';
 import { DialogModule } from 'primeng/dialog';
 import { LocationDetailDialogComponent } from '@shared/components/dialogs/location-detail-dialog/location-detail-dialog.component';
-import { FavoritesService } from '@core/services/favorites.service';
-import { ItemType } from '@core/enums/item-type';
-import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-card-location',
@@ -25,8 +22,6 @@ export class CardLocationComponent {
 
   constructor(
     private locationService: LocationService,
-    private favoritesService: FavoritesService,
-    private messageService: MessageService
   ) {}
 
   openDialog(): void {
@@ -40,31 +35,5 @@ export class CardLocationComponent {
 
   closeDialog(): void {
     this.showDialog = false;
-  }
-
-  toggleFavorite(): void {
-    this.isFavorite = !this.isFavorite;
-    this.favoritesService
-      .toggleFavorite(this.location.id, this.isFavorite, ItemType.LOCATION)
-      .subscribe({
-        next: () => {
-          if (!this.isFavorite) {
-            return this.onRemove.emit(this.location.id)
-          }
-
-          return this.messageService.add({
-            severity: 'success',
-            summary: 'Sucesso',
-            detail: 'Item adicionado aos favoritos com sucesso',
-          });
-        },
-        error: () => {
-          return this.messageService.add({
-            severity: 'error',
-            summary: 'Erro',
-            detail: 'Não foi possível adicionar item aos favoritos',
-          });
-        }
-      });
   }
 }

@@ -10,7 +10,6 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { RouterModule, Router } from '@angular/router';
 import { ThemeService } from '@core/services/theme.service';
-import { AuthService } from '@core/services/auth.service';
 import { MenuModule } from 'primeng/menu';
 
 @Component({
@@ -33,27 +32,11 @@ export class HeaderComponent implements AfterViewInit {
   @ViewChild('themeText') themeText!: ElementRef;
   @ViewChild('logotype') logotype!: ElementRef;
 
-  isAuthenticated: boolean = false;
-
-  items = [
-    { label: 'Editar perfil', icon: 'pi pi-pencil', command: () => this.editar() },
-    { label: 'Favoritos', icon: 'pi pi-heart', command: () => this.redirectsToFavoritesPage() },
-    { separator: true },
-    { label: 'Sair', icon: 'pi pi-sign-out', command: () => this.logout() }
-  ];
-
   constructor(
     private renderer: Renderer2,
     private themeService: ThemeService,
-    private authService: AuthService,
     private router: Router
   ) { }
-
-  ngOnInit(): void {
-    this.authService.authStatus$.subscribe((isLoggedIn) => {
-      this.isAuthenticated = isLoggedIn;
-    });
-  }
 
   ngAfterViewInit(): void {
     const current =
@@ -78,21 +61,5 @@ export class HeaderComponent implements AfterViewInit {
 
   toggleTheme() {
     this.themeService.toggleTheme();
-  }
-
-  editar() {
-    this.router.navigate(['/profile']);
-  }
-
-  excluir() {
-    console.log('Excluir');
-  }
-
-  logout() {
-    this.authService.logout();
-  }
-
-  redirectsToFavoritesPage() {
-    this.router.navigate(['/profile/favorites']);
   }
 }

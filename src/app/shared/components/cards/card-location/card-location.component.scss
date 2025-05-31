@@ -134,7 +134,7 @@ $transition-standard: 0.3s ease;
 
 .button-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-top: 1rem;
   width: 100%;
@@ -196,22 +196,6 @@ $transition-standard: 0.3s ease;
     .text-wrapper {
       font-size: 0.7rem;
     }
-  }
-}
-
-.heart {
-  font-size: 1.5rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--text-color);
-
-  @media (max-width: $tablet-breakpoint) {
-    font-size: 1.3rem;
-  }
-
-  @media (max-width: $mobile-breakpoint) {
-    font-size: 1.1rem;
   }
 }
 

@@ -9,7 +9,7 @@ import { Observable, map } from 'rxjs';
   providedIn: 'root',
 })
 export class CharacterService {
-  private readonly API_URL = `${environment.apiBaseUrl}/characters`;
+  private readonly API_URL = `${environment.apiBaseUrl}/character`;
 
   constructor(private http: HttpClient) {}
 
