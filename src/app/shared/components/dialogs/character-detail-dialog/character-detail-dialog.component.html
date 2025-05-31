@@ -1,0 +1,31 @@
+<div class="dialog-content">
+  <button class="close-btn" (click)="close()" aria-label="Close dialog">
+    <i class="pi pi-times-circle"></i>
+  </button>
+  <div class="image-container">
+    <img class="image" [src]="character.image" [alt]="character.name" />
+  </div>
+  <div class="character-info">
+    <h2 class="character-name">{{ character.name }}</h2>
+    <p class="info-item">
+      <i class="pi pi-wave-pulse"></i>
+      <span class="text">Status: {{ character.status }}</span>
+    </p>
+    <p class="info-item">
+      <i class="pi pi-user"></i>
+      <span class="text">Specie: {{ character.species }}</span>
+    </p>
+    <p class="info-item">
+      <i class="pi pi-mars"></i>
+      <span class="text">Gender: {{ character.gender }}</span>
+    </p>
+    <p class="info-item">
+      <i class="pi pi-hammer"></i>
+      <span class="text">Type: {{ character.type }}</span>
+    </p>
+    <p class="info-item">
+      <i class="pi pi-map"></i>
+      <span class="text">Location: {{ character.location.name }}</span>
+    </p>
+  </div>
+</div>

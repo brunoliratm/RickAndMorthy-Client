@@ -1,0 +1,22 @@
+<section class="locations-section">
+  <div class="section-header">
+    <h2>Locations</h2>
+    <button class="btn" [routerLink]="['/locations']">
+      <i class="pi pi-objects-column"></i> See all
+    </button>
+  </div>
+
+  <div class="grid-container">
+    <p-carousel
+      [value]="locations"
+      [numScroll]="1"
+      [numVisible]="6"
+      [circular]="false" 
+      [responsiveOptions]="responsiveOptions"
+    >
+      <ng-template pTemplate="item" let-location>
+        <app-card-location [location]="location" [isFavorite]="location.isFavorite"></app-card-location>
+      </ng-template>
+    </p-carousel>
+  </div>
+</section>

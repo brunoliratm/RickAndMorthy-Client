@@ -1,0 +1,42 @@
+<section class="hero">
+  <div class="hero__container-text">
+    <div class="hero__container-text__text">
+      <div class="first-division">
+        <span>Rick and Morty’s</span>
+        <span>DATABASE</span>
+      </div>
+      <div class="secundary-division">
+        <span>Characters, locations, episodes and more</span>
+      </div>
+      <div class="third-division">
+        <a
+          class="third-division__actions"
+          [routerLink]="['/characters']"
+          routerLinkActive="active-link"
+        >
+          <i class="pi pi-face-smile"></i>
+          <span>Characters</span>
+        </a>
+        <a
+          class="third-division__actions"
+          [routerLink]="['/locations']"
+          routerLinkActive="active-link"
+        >
+          <i class="pi pi-globe"></i>
+          <span>Locations</span>
+        </a>
+        <a
+          class="third-division__actions"
+          [routerLink]="['/episodes']"
+          routerLinkActive="active-link"
+        >
+          <i class="pi pi-play-circle"></i>
+          <span>Episodes</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="hero__persons">
+    <img src="assets/vector.svg" alt="" />
+  </div>
+</section>

@@ -1,0 +1,53 @@
+<article class="character-card">
+  <div class="group">
+    <img class="image" [src]="character.image" [alt]="character.name" />
+
+    <div class="character-info">
+      <h2 class="character-name">{{ character.name }}</h2>
+      <ul class="information">
+        <li class="info-item">
+          <i class="pi pi-wave-pulse" aria-hidden="true"></i>
+          <span class="status">{{ character.status }}</span>
+        </li>
+        <li class="info-item">
+          <i class="pi pi-user" aria-hidden="true"></i>
+          <span class="species">{{ character.species }}</span>
+        </li>
+        <li class="info-item">
+          <i class="pi pi-map" aria-hidden="true"></i>
+          <span class="origin">{{ character.location.name }}</span>
+        </li>
+      </ul>
+      <div class="button-container">
+        <button class="knew-more-btn" type="button" (click)="openDialog()">
+          <i class="pi pi-info-circle know" aria-hidden="true"></i>
+          <span class="text-wrapper">Learn more</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</article>
+<p-dialog
+  [(visible)]="showDialog"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [style]="{ width: '95%', maxWidth: '40rem', borderRadius: '1rem' }"
+  [contentStyle]="{ overflow: 'hidden', padding: '0' }"
+  [showHeader]="false"
+  appendTo="body"
+  [baseZIndex]="10000"
+  styleClass="character-dialog"
+  [dismissableMask]="true"
+  [breakpoints]="{ '960px': '95vw', '640px': '100vw' }"
+  [position]="'center'"
+  [maskStyle]="{
+    'background-color': 'rgba(0,0,0,0.7)',
+    'backdrop-filter': 'blur(2px)'
+  }"
+>
+  <app-character-detail-dialog
+    [character]="character"
+    (closeEvent)="closeDialog()"
+  ></app-character-detail-dialog>
+</p-dialog>

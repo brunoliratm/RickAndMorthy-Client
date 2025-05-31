@@ -1,0 +1,22 @@
+<div class="dialog-content">
+  <button class="close-btn" (click)="close()" aria-label="Close dialog">
+    <i class="pi pi-times-circle"></i>
+  </button>
+  <div class="main-content">
+    <div class="icon-container">
+      <i class="pi pi-play-circle episode-icon"></i>
+    </div>
+    <div class="episode-info">
+      <h2 class="episode-name">{{ episode.name }}</h2>
+      <p class="info-item">
+        <i class="pi pi-calendar"></i>
+        <span class="text">Release: {{ episode.air_date | date }}</span>
+      </p>
+
+      <p class="info-item">
+        <i class="pi pi-tag"></i>
+        <span class="text">Code: {{ episode.episode }}</span>
+      </p>
+    </div>
+  </div>
+</div>
